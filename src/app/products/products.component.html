@@ -1,0 +1,7 @@
+<div *ngFor="let product of products">
+  {{ product.name }}
+  {{ product.productCategory | json}}
+  <img [src]="product.imageUrl" alt="movie poster">
+</div>
+
+
