@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +15,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppErrorHandlerComponent } from './common/validators/app-error-handler/app-error-handler.component'
+
 
 @NgModule({
   declarations: [
@@ -28,8 +28,6 @@ import { AppErrorHandlerComponent } from './common/validators/app-error-handler/
     OrderSuccessComponent,
     AdminOrdersComponent,
     PageNotFoundComponent,
-    AppErrorHandlerComponent,
-
   ],
   imports: [
     BrowserModule,
