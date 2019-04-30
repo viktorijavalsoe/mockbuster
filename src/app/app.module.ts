@@ -14,7 +14,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppErrorHandlerComponent } from './common/validators/app-error-handler/app-error-handler.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     OrderSuccessComponent,
     AdminOrdersComponent,
     PageNotFoundComponent,
+    AppErrorHandlerComponent,
 
   ],
   imports: [
