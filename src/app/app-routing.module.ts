@@ -1,7 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductsComponent } from './products/products.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'products', component: ProductsComponent},
+  {path: 'shopping-cart', component: ShoppingCartComponent},
+  {path: 'check-out', component: CheckoutComponent},
+  {path: 'order-success', component: OrderSuccessComponent},
+  {path: 'admin/orders', component: AdminOrdersComponent},
+  {path: 'home', component: HomeComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
