@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct';
 import { DataService } from '../service/data.service';
 import * as moment from 'moment';
+import { ICategory } from '../interfaces/icategory';
 
 
 @Component({
@@ -23,4 +24,5 @@ export class ProductsComponent implements OnInit {
       }
     ); 
   }; 
+
 }
