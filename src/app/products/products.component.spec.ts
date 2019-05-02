@@ -30,6 +30,10 @@ describe('ProductsComponent', () => {
     expect(component.products.length).toBeGreaterThan(0);
   });
 
+  // it('should contain categories', () => {
+  //   expect(component.categories.length).toBeGreaterThan(0);
+  // })
+
   // it('should add product to cart', () => {
   //   component.addToCart(product: IProduct);
 
