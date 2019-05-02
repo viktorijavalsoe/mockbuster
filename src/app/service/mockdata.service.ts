@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IDataService } from '../interfaces/idata-service';
-import { Observable, of } from 'rxjs';
 import { IProduct } from '../interfaces/iproduct';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -44,12 +46,48 @@ export class MockdataService implements IDataService {
           category: null
         }
       ]
+    },
+    {
+      id: 78,
+      name:"Le fabuleux destin d'Amélie Poulain",
+      description:"Amélie is an innocent and naive girl in Paris with her own sense of justice. She decides to help those around her and, along the way, discovers love.",
+      price: 100,
+      imageUrl:"https://images-na.ssl-images-amazon.com/images/M/MV5BNDg4NjM1YjMtYmNhZC00MjM0LWFiZmYtNGY1YjA3MzZmODc5XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+      year: 2001,
+      added:"2017-07-10T00:00:00",
+      productCategory:[
+        {
+          categoryId: 7,
+          category: null
+        }
+      ]
     }
-  ]
+  ];
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occured. 
+      console.error('An error occured: ', error.error.message);
+    } else {
+      // The backend returned an unsuccessful respons code.
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // Return an observable with a user-facing error message
+    return throwError(
+      'Oopsy, something bad happened. Please try again later'
+    );
+  };
 
   getData() : Observable<IProduct[]> {
-    return of(this.products);
-
+    return of(this.products).pipe(
+      // Retry a failed request up to 3 times.
+      retry(3),
+      // Then handle error
+      catchError(this.handleError)
+  );    
+ 
   }
 
   }
