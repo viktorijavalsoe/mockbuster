@@ -1,9 +1,5 @@
-<!-- <div *ngFor="let product of products">
-  {{ product.name }}
-  {{ product.productCategory | json}}
-  <img [src]="product.imageUrl" alt="movie poster">
-</div> -->
-
+<h2>comedies</h2>
+{{ comedies | json }}
 <ul class="list-group">
   <li 
     *ngFor="let product of products"
@@ -14,6 +10,9 @@
     <img [src]="product.imageUrl" alt="movie poster">
   </li>
 </ul>
+
+
+
 
 
 
