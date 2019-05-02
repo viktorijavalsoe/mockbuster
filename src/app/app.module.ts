@@ -15,6 +15,8 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MovieCategoriesComponent } from './movie-categories/movie-categories.component';
+import { MovieComponent } from './movie/movie.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OrderSuccessComponent,
     AdminOrdersComponent,
     PageNotFoundComponent,
+    MovieCategoriesComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,

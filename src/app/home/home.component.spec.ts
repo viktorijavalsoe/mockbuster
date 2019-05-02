@@ -6,6 +6,8 @@ import { MockdataService } from '../service/mockdata.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { from } from 'rxjs';
 import { DataService } from '../service/data.service';
+import { MovieCategoriesComponent } from '../movie-categories/movie-categories.component';
+import { MovieComponent } from '../movie/movie.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,7 +18,9 @@ describe('HomeComponent', () => {
       imports: [HttpClientTestingModule],
       declarations: [ 
         HomeComponent,
-        ProductsComponent
+        ProductsComponent,
+        MovieCategoriesComponent,
+        MovieComponent
       ]
     })
     .overrideComponent( ProductsComponent, { set: { providers: [ { provide: DataService, useClass: MockdataService}]}})

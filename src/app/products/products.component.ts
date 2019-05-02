@@ -4,6 +4,7 @@ import { DataService } from '../service/data.service';
 import * as moment from 'moment';
 import { ICategory } from '../interfaces/icategory';
 import { ActivatedRoute } from '@angular/router';
+import { IMovieCategories } from '../interfaces/imovie-categories';
 
 
 @Component({
@@ -12,27 +13,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products: IProduct[];
-  comedies: IProduct[] = [];
+  categories: IMovieCategories[];
 
   constructor(
     private service: DataService
   ) { }
 
   ngOnInit() {
-    this.service.getData()
-      .subscribe((data: IProduct[]) => { 
-        this.products = data; 
-
-        // for (let i = 0; i < this.products.length; i++){
-        //   const movie = this.products[i];
-        //   if (movie.productCategory[0].categoryId == 7){
-        //     console.log(movie.name);
-        //     this.comedies.push(movie);
-        //   } 
-        // }
-      } 
-    ); 
+    this.service.getCategories()
+    .subscribe((categories: IMovieCategories[]) => {
+      this.categories = categories;
+    })
   }; 
   
 }

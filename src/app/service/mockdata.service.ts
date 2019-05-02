@@ -4,6 +4,8 @@ import { IProduct } from '../interfaces/iproduct';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { IMovieCategories } from '../interfaces/imovie-categories';
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +66,25 @@ export class MockdataService implements IDataService {
     }
   ];
 
+  categories: IMovieCategories[] = [
+    {
+      id: 5,
+      name: "Action"
+    },
+    {
+      id: 6,
+      name: "Thriller"
+    },
+    {
+      id: 7,
+      name: "Comedy"
+    },
+    {
+      id: 8,
+      name: "Sci-fi"
+    }
+  ];
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occured. 
@@ -80,15 +101,23 @@ export class MockdataService implements IDataService {
     );
   };
 
+
   getData() : Observable<IProduct[]> {
     return of(this.products).pipe(
       // Retry a failed request up to 3 times.
       retry(3),
       // Then handle error
       catchError(this.handleError)
-  );    
- 
+    ); 
   }
 
-  }
+  getCategories(): Observable<IMovieCategories[]> {
+    return  of(this.categories).pipe(
+      // Retry a failed request up to 3 times.
+      retry(3),
+      // Then handle error
+      catchError(this.handleError)
+    )
+  };
 
+}

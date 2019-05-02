@@ -4,14 +4,16 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { IProduct } from '../interfaces/iproduct';
 import { IDataService } from '../interfaces/idata-service';
+import { IMovieCategories } from '../interfaces/imovie-categories';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService implements IDataService {
-
   constructor( private http: HttpClient) {  }  
+
   configURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';
+  categoriesURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/categories';
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -37,5 +39,9 @@ export class DataService implements IDataService {
         // Then handle error
         catchError(this.handleError)
     );    
+  }
+
+  getCategories(): Observable<IMovieCategories[]> {
+    return this.http.get<IMovieCategories[]>(this.categoriesURL);
   }
 }

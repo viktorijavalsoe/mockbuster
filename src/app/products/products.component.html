@@ -1,15 +1,9 @@
-<h2>comedies</h2>
-{{ comedies | json }}
-<ul class="list-group">
-  <li 
-    *ngFor="let product of products"
-    class="list-group-item">
-    {{ product.name }}
-    {{ product.productCategory[0].categoryId }}
-    <!-- {{ product.productCategory | json}} -->
-    <img [src]="product.imageUrl" alt="movie poster">
-  </li>
-</ul>
+<div class="cateroriesContainer">
+    <app-movie-categories
+      *ngFor="let category of categories" [category]="category">
+    </app-movie-categories>
+      
+
 
 
 

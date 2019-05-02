@@ -1,0 +1,17 @@
+<h2 class="decorated">
+    <span>{{ category.name }}
+    </span>
+</h2>
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col col-sm">
+        <app-movie
+          *ngFor="let product of products" [movie]="product">
+        </app-movie>
+      </div>
+  </div>
+</div>
+
+
+

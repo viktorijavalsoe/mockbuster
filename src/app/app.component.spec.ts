@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsComponent } from './products/products.component';
+import { MovieCategoriesComponent } from './movie-categories/movie-categories.component';
+import { MovieComponent } from './movie/movie.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,6 +16,8 @@ describe('AppComponent', () => {
         AppComponent,
         NavbarComponent,
         ProductsComponent,
+        MovieCategoriesComponent,
+        MovieComponent
 
       ],
     }).compileComponents();
