@@ -1,4 +1,11 @@
-<h2>{{ movie.name }}</h2>
- <img [src]="movie.imageUrl" class="img-fluid" alt="Movie Poster"> 
-   
-
+<div class="col col-2">
+ <div class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="movie.imageUrl"  alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{movie.name}}</h5>
+    <a class="btn btn-primary info-button">i</a>
+    <p class="card-text">{{movie.price | currency:"USD"}}</p>
+    <a href="#" class="btn btn-primary">Add to Cart</a>
+  </div>
+</div>
+</div>

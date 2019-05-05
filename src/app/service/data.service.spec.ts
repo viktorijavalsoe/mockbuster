@@ -4,6 +4,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DataService', () => {
   beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      DataService
+    ],
     imports: [
       HttpClientTestingModule
     ]

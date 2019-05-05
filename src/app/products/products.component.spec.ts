@@ -26,13 +26,13 @@ describe('ProductsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain categories', () => {
-    expect(component.categories.length).toBeGreaterThan(0);
-  })
+  // it('should contain categories', () => {
+  //   expect(component.categories.length).toBeGreaterThan(0);
+  // })
 
-  it('should contain  4 categories', () => {
-    expect(component.categories.length).toBe(4);
-  })
+  // it('should contain  4 categories', () => {
+  //   expect(component.categories.length).toBe(4);
+  // })
 
   // it('should add product to cart', () => {
   //   component.addToCart(product: IProduct);

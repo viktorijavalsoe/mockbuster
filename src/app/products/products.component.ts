@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../interfaces/iproduct';
 import { DataService } from '../service/data.service';
 import * as moment from 'moment';
-import { ICategory } from '../interfaces/icategory';
-import { ActivatedRoute } from '@angular/router';
 import { IMovieCategories } from '../interfaces/imovie-categories';
 
 
