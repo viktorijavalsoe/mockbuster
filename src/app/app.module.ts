@@ -17,8 +17,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieCategoriesComponent } from './movie-categories/movie-categories.component';
 import { MovieComponent } from './movie/movie.component';
-import { ProductCardComponent } from './product-card/product-card.component';
-
 
 @NgModule({
   declarations: [
@@ -33,7 +31,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     PageNotFoundComponent,
     MovieCategoriesComponent,
     MovieComponent,
-    ProductCardComponent,
+   
   ],
   imports: [
     BrowserModule,
