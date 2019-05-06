@@ -9,25 +9,33 @@ import { IProduct } from '../interfaces/iproduct';
   styleUrls: ['./movie-categories.component.scss']
 })
 export class MovieCategoriesComponent implements OnInit {
-  @Input() category:IMovieCategories;
+  @Input() category: IMovieCategories;
 
   products: IProduct[] = [];
-
+  
   constructor( private service : DataService) { }
 
   ngOnInit() {
     this.service.getData()
       .subscribe((data: IProduct[]) => { 
-        for (let i = 0; i < data.length; i++){
-          const product = data[i];
-          const productCategory = data[i].productCategory;
-          // console.log(productCategory)
-            if (productCategory[0].categoryId == this.category.id){
-              // console.log(product.name + " " + this.category.name);
-            this.products.push(product);
-         } 
-       }
+        this.findMovies(data);
       } 
     ); 
   };
-}
+
+  findMovies(data: IProduct[]) { 
+    for (let i = 0; i < data.length; i++){
+      
+      const product = data[i];
+      const productCategories = product.productCategory;
+        for (let j = 0; j < productCategories.length; j++){
+          
+          if (productCategories[j].categoryId == this.category.id){
+            
+            this.products.push(product);
+            }
+          } 
+        }
+      }
+    };
+
