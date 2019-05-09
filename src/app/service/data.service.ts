@@ -5,6 +5,9 @@ import { catchError, retry } from 'rxjs/operators';
 import { IProduct } from '../interfaces/iproduct';
 import { IDataService } from '../interfaces/idata-service';
 import { IMovieCategories } from '../interfaces/imovie-categories';
+import { IOrder } from '../interfaces/iorder';
+import { ShoppingCardService } from './shopping-card.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,14 @@ export class DataService implements IDataService {
 
   configURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';
   categoriesURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/categories';
+
+  //
+  orderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders';
+
+  // Eksempel https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText=aliens
+  searchURL=' https://medieinstitutet-wie-products.azurewebsites.net/api/search';
+
+  // shoppingCart:IProduct[] = [];
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -44,4 +55,10 @@ export class DataService implements IDataService {
   getCategories(): Observable<IMovieCategories[]> {
     return this.http.get<IMovieCategories[]>(this.categoriesURL);
   }
+
+  createOrder(order): Observable<IOrder[]>{
+    return this.http.post<IOrder[]>(this.orderURL, order);
+  }
+
 }
+
