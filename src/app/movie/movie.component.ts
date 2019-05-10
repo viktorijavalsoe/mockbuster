@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct';
-import { DataService } from '../service/data.service';
 import { ShoppingCardService } from '../service/shopping-card.service';
-import { EventEmitter } from 'protractor';
+
 
 @Component({
   selector: 'app-movie',
@@ -11,17 +10,23 @@ import { EventEmitter } from 'protractor';
 })
 export class MovieComponent implements OnInit {
   @Input() movie: IProduct; 
-  // @Input() movieQuantity: number;
-  // @Output() add = new EventEmitter <number>();
+  // @Output() movieInfo= new EventEmitter<IProduct>();
 
-
-  constructor( private service: ShoppingCardService) { 
-  }
+  constructor(private shoppingService : ShoppingCardService) { }
 
   ngOnInit() {  
+  }  
+
+  handleClick(){
+    this.shoppingService.addToCart(this.movie);    
   }
-  handleClick(movie){
-    this.service.addToCart(movie);
-  };
-   
+
+  modalVisibility: boolean = true;
+ 
+  toggle(){
+    this.modalVisibility = !this.modalVisibility;
+
+  }
+
+
 }
