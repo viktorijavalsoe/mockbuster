@@ -1,7 +1,15 @@
-/* headlines with lines */
+/* Color variables */
+
+$base-color: #141414;
+$font-color: #ccc;
+$detail-color: #e21121;
+
+/* Headlines with lines */
 .decorated{
   overflow: hidden;
   text-align: center;
+  color: $font-color;
+  padding: 50px 0 50px 0;
 }
 .decorated > span{
  position: relative;
@@ -21,3 +29,19 @@
 .decorated > span:after{
  left: 100%;
 }
+
+/* Horizontally scrolled sections */
+.scrolling-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+    color: $font-color;
+    background-color: $base-color;
+    margin: 1rem;
+
+  }
+}
+

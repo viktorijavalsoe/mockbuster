@@ -1,33 +1,37 @@
-<div class="col col-2">
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" [src]="movie.imageUrl"  alt="{{ movie.name }}">
-    <div class="card-body">
-      <h5 class="card-title">{{movie.name}}</h5>
-      
-      <button class="btn btn-danger info-button" (click)="toggle()">i</button>
-      <p class="card-text">{{movie.price | currency:"USD"}}</p>
-    </div>
-    <div class="card-footer">
-      <!-- *ngIf="getQuantity() === 0; else updateQuantity" -->
-      <button 
-        (click)="handleClick(movie)" 
-        class="btn btn-danger btn-block">Add to Cart</button>
-      <!-- <ng-template #updateQuantity>
-        <div class="row">
-          <div class="col-2">
-            <button class="btn btn-danger btn-block">-</button>
+
+      <div class="card" style="width: 20rem;">
+  
+              <img class="card-img-top img" [src]="movie.imageUrl"  alt="{{ movie.name }}">
+       
+         
+          <div class="card-body">
+            <div class="row">
+                <h5 class="card-title">{{movie.name}}</h5>
+                <button class="btn info-button" (click)="toggle()">i</button>
+            </div>
+            <p class="card-text">{{movie.price | currency:"USD"}}</p>
           </div>
-          <div class="col">
-            {{ movieQuantity }}
-          </div>
-          <div class="col-2">
-            <button class="btn btn-danger btn-block">+</button>
+          <div class="card-footer">
+            <!-- *ngIf="getQuantity() === 0; else updateQuantity" -->
+            <button 
+              (click)="handleClick(movie)" 
+              class="btn btn-block">Add to Cart</button>
+            <!-- <ng-template #updateQuantity>
+              <div class="row">
+                <div class="col-2">
+                  <button class="btn btn-danger btn-block">-</button>
+                </div>
+                <div class="col">
+                  {{ movieQuantity }}
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-danger btn-block">+</button>
+                </div>
+              </div>
+            </ng-template> -->
           </div>
         </div>
-      </ng-template> -->
-    </div>
-  </div>
-</div>
+ 
 
 <app-product-modal [class.display_modal]="modalVisibility" [movieInfo]="movie"></app-product-modal>
 

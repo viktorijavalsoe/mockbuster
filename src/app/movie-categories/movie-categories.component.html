@@ -2,13 +2,15 @@
     <span class="category">{{ category.name }}</span>
 </h2>
 
-<div class="container">
-  <div class="row justify-content-center">
-     <app-movie
-        *ngFor="let product of products; let i = index" [movie]="product">
-      </app-movie> 
-  </div>
+<div class="scrolling-wrapper">
+  <app-movie
+    class="card"
+    *ngFor="let product of products; let i = index" 
+    [movie]="product">
+  </app-movie>   
 </div>
+
+
 
 
 

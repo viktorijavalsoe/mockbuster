@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IMovieCategories } from '../interfaces/imovie-categories';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  categories: IMovieCategories[];
+
+  constructor (private service: DataService) { }
 
   ngOnInit() {
-  }
+    this.service.getCategories()
+    .subscribe((categories: IMovieCategories[]) => {
+      this.categories = categories;
+    })
+  }; 
 
 }

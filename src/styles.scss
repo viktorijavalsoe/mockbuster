@@ -2,7 +2,13 @@
 /* Bootstrap */
 @import "~bootstrap/dist/css/bootstrap.css";
 
+//Color variables
+$base-color: #141414;
+$font-color: #ccc;
+$detail-color: #e21121;
+
 body{
-  padding-top: 80px;
-  
+  background-color: $base-color;
 }
+
+
