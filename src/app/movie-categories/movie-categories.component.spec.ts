@@ -1,25 +1,32 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement, Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
-
 import { DataService } from '../service/data.service';
 import { MockdataService } from '../service/mockdata.service';
 
 import { MovieCategoriesComponent } from './movie-categories.component';
 import { IMovieCategories } from '../interfaces/imovie-categories';
 import { MovieComponent } from '../movie/movie.component';
+import { ProductModalComponent } from '../product-modal/product-modal.component';
+
+import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute } from '@angular/router';
+import { ActivatedRouteStub } from './testing/activatedRouteStub';
 
 describe('MovieCategoriesComponent', () => {
   let testHostComponent: TestHostComponent;
   let testHostFixture: ComponentFixture<TestHostComponent>;
 
+  const activatedRouteStub = new ActivatedRouteStub({ id : 6})
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [{ provide: ActivatedRoute, useValue: activatedRouteStub }],
       declarations: 
       [ 
         MovieCategoriesComponent,
         TestHostComponent,
-        MovieComponent
+        MovieComponent,
+        ProductModalComponent
       ]
     })
 
@@ -36,7 +43,7 @@ describe('MovieCategoriesComponent', () => {
 
   it('should create', () => {
     expect(testHostComponent).toBeTruthy();
-  });
+  })
 
   it('should contain categories', () => {
     expect(testHostComponent.categories.length).toBeGreaterThan(0);
@@ -51,6 +58,7 @@ describe('MovieCategoriesComponent', () => {
   })
   class TestHostComponent {
     categories: IMovieCategories[];
+
 
     constructor(private service: MockdataService) { }
 

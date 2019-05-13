@@ -5,11 +5,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsComponent } from './products/products.component';
 import { MovieCategoriesComponent } from './movie-categories/movie-categories.component';
 import { MovieComponent } from './movie/movie.component';
+import { ProductModalComponent } from './product-modal/product-modal.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        HttpClientTestingModule,
         RouterTestingModule
       ],
       declarations: [
@@ -17,7 +20,9 @@ describe('AppComponent', () => {
         NavbarComponent,
         ProductsComponent,
         MovieCategoriesComponent,
-        MovieComponent
+        MovieComponent,
+        ProductModalComponent,
+        
 
       ],
     }).compileComponents();

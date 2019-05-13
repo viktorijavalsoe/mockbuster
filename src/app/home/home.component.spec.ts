@@ -8,6 +8,8 @@ import { from } from 'rxjs';
 import { DataService } from '../service/data.service';
 import { MovieCategoriesComponent } from '../movie-categories/movie-categories.component';
 import { MovieComponent } from '../movie/movie.component';
+import { ProductModalComponent } from '../product-modal/product-modal.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -15,12 +17,15 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule],
       declarations: [ 
         HomeComponent,
         ProductsComponent,
         MovieCategoriesComponent,
-        MovieComponent
+        MovieComponent,
+        ProductModalComponent
       ]
     })
     .overrideComponent( ProductsComponent, { set: { providers: [ { provide: DataService, useClass: MockdataService}]}})

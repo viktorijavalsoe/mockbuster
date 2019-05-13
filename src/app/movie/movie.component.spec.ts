@@ -4,6 +4,7 @@ import { MovieComponent } from './movie.component';
 import { IProduct } from '../interfaces/iproduct';
 import { MockdataService } from '../service/mockdata.service';
 import { Component } from '@angular/core';
+import { ProductModalComponent } from '../product-modal/product-modal.component';
 
 describe('MovieComponent', () => {
   let testHostComponent: TestHostComponent;
@@ -14,6 +15,7 @@ describe('MovieComponent', () => {
       declarations: [ 
         MovieComponent,
         TestHostComponent,
+        ProductModalComponent
        ]
     })
     .compileComponents();
