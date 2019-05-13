@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IMovieCategories } from '../interfaces/imovie-categories';
 import { DataService } from '../service/data.service';
 import { IProduct } from '../interfaces/iproduct';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-categories',
@@ -13,17 +14,31 @@ export class MovieCategoriesComponent implements OnInit {
 
   products: IProduct[] = [];
   
-  constructor( private service : DataService) { }
+  constructor( 
+    private service : DataService,
+    private route : ActivatedRoute ) 
+    { }
 
   ngOnInit() {
-    this.service.getData()
-      .subscribe((data: IProduct[]) => { 
-        this.findMovies(data);
-      } 
-    ); 
+    
+    this.route.paramMap
+      .subscribe(categoryParams =>{
+        // console.log(categoryParams)
+        let id = +categoryParams.get('id');
+        console.log(id);
+
+        this.service.getData()
+          .subscribe((data: IProduct[]) => { 
+            this.findMovies(data, id);
+          } 
+        ); 
+      });
   };
 
-  findMovies(data: IProduct[]) { 
+  findMovies(data: IProduct[], categoryId: number) { 
+    // console.log(this.category.id);
+    
+    if(categoryId === 0) {
     for (let i = 0; i < data.length; i++){
       
       const product = data[i];
@@ -37,5 +52,29 @@ export class MovieCategoriesComponent implements OnInit {
           } 
         }
       }
-    };
+    
+    else {
+      this.service.getCategories().subscribe(cats => {
+        for(let i = 0; i < cats.length; i++) {
+          if(cats[i].id === categoryId) {
+            this.category = cats[i];
+          }
+        }
+      })
+
+      for (let i = 0; i < data.length; i++){
+      
+        const product = data[i];
+        const productCategories = product.productCategory;
+          for (let j = 0; j < productCategories.length; j++){
+            
+            if (productCategories[j].categoryId == categoryId){
+              
+              this.products.push(product);
+              }
+            } 
+          }
+        }
+    }
+  }
 
