@@ -1,29 +1,45 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct';
+import { Subject } from 'rxjs';
+import { ICartItem } from '../interfaces/icart-item';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCardService {
 
-  private cartItems : IProduct[] = [];
+  private cardItem = new Subject<IProduct>();
 
-  constructor() { }
+  cart: ICartItem[] = [];
+  totalQuantity: number;
 
-  getCartItems(){
-    return this.cartItems;
+  movieClicked = this.cardItem.asObservable();
+
+  getCart(){
+    return this.cart;
   }
-  
-  addToCart(movie: IProduct) {
-    if (this.cartItems.includes(movie)){
-        return;
-      } else {
-      this.cartItems.push(movie);   
+
+  addToCard(movie: IProduct){
+    this.cardItem.next(movie);
+    let foundMovie = false;
+      
+        for( let i = 0; i < this.cart.length; i++){
+          if(this.cart[i].product.id === movie.id) {
+            this.cart[i].amount++;
+            foundMovie = true;
+            console.log("movie name + " + movie.name + "movie quantity" + this.cart[i].amount);
+          }
+        }
+
+        if(!foundMovie) {
+          this.cart.push({ amount: 1, product: movie});
+        }
     }
-  }
 
-  removeToCart(movie: IProduct) {
-    this.cartItems.splice(this.cartItems.indexOf(movie), 1);
-   
+  getTotal(){
+    for( let i = 0; i < this.cart.length; i++){
+      this.totalQuantity += this.cart[i].amount;
+    }
   }
 }

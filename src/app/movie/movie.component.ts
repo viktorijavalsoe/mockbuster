@@ -13,20 +13,19 @@ export class MovieComponent implements OnInit {
   // @Output() movieInfo= new EventEmitter<IProduct>();
 
   constructor(private shoppingService : ShoppingCardService) { }
-
+  
   ngOnInit() {  
+    
   }  
 
-  handleClick(){
-    this.shoppingService.addToCart(this.movie);    
+  addMovie(){
+    this.shoppingService.addToCard(this.movie);
+    //console.log(this.movie);     
   }
 
   modalVisibility: boolean = true;
  
   toggle(){
     this.modalVisibility = !this.modalVisibility;
-
   }
-
-
 }

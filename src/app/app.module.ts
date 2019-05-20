@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieCategoriesComponent } from './movie-categories/movie-categories.component';
 import { MovieComponent } from './movie/movie.component';
 import { ProductModalComponent } from './product-modal/product-modal.component';
+import { ShoppingCardService } from './service/shopping-card.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { ProductModalComponent } from './product-modal/product-modal.component';
     FormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [ ShoppingCardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,12 +12,23 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private service: ShoppingCardService) { }
 
-  private shoppingCart: IProduct[] = []
-
   ngOnInit() {
-   this.shoppingCart = this.service.getCartItems();
-   console.log(this.shoppingCart);
+    console.log('Starting cart');
+    
+    this.service.movieClicked.subscribe(movie =>
+      {
+        console.log('from cart: '+  movie);
+        
+      }
+      )
   }
+
+  cardItems = [];
+
+  getCardItems(){
+  }
+
+
 
 
 }

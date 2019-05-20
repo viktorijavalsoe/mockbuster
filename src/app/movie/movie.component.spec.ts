@@ -10,6 +10,9 @@ describe('MovieComponent', () => {
   let testHostComponent: TestHostComponent;
   let testHostFixture: ComponentFixture<TestHostComponent>;
 
+  let component: MovieComponent;
+  let fixture: ComponentFixture<MovieComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ 
@@ -25,6 +28,10 @@ describe('MovieComponent', () => {
     testHostFixture = TestBed.createComponent(TestHostComponent);
     testHostComponent = testHostFixture.componentInstance;
     testHostFixture.detectChanges();
+
+    fixture = TestBed.createComponent(MovieComponent);
+    component = fixture.componentInstance;
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -41,8 +48,30 @@ describe('MovieComponent', () => {
     expect(catgories.indexOf(5)).toBeGreaterThanOrEqual(0);
   })
 
+  it('', () => {
+    component.movie = {
+        id: 76,
+        name: 'The Dark Knight',
+        description: 'When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice',
+        price: 199,
+        imageUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg',
+        year: 2008,
+        added: '2016-01-05T00:00:00',
+        productCategory:[
+          {
+            categoryId: 5,
+            category: null},
+          { categoryId: 6,
+            category: null
+          }
+        ]
+      }
+
+    fixture.detectChanges();
+  })
+
   @Component({
-    template: '<app-movie *ngFor="let product of products" [movie]="products"> </app-movie> ' 
+    template: '<app-movie *ngFor="let product of products" [movie]="products"> </app-movie>' 
   })
   class TestHostComponent {
 

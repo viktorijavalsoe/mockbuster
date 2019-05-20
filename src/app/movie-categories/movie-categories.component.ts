@@ -36,7 +36,6 @@ export class MovieCategoriesComponent implements OnInit {
   };
 
   findMovies(data: IProduct[], categoryId: number) { 
-    // console.log(this.category.id);
     
     if(categoryId === 0) {
     for (let i = 0; i < data.length; i++){
