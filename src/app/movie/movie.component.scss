@@ -8,6 +8,11 @@ $detail-color: #e21121;
   color: white;
 }
 
+.counter-btn{
+ 
+
+}
+
 .card{
   background-color: $base-color;
 }
@@ -29,5 +34,11 @@ $detail-color: #e21121;
 .img{
   height: 500px;
   margin-bottom: 20px;
+}
+
+.quantity{
+  text-align: center;
+  background-color: white;
+  color: black;
 }
 

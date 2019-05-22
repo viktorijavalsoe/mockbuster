@@ -19,6 +19,7 @@ import { MovieCategoriesComponent } from './movie-categories/movie-categories.co
 import { MovieComponent } from './movie/movie.component';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ShoppingCardService } from './service/shopping-card.service';
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ShoppingCardService } from './service/shopping-card.service';
     MovieCategoriesComponent,
     MovieComponent,
     ProductModalComponent,
+    CounterComponent,
    
   ],
   imports: [

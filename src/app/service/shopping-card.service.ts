@@ -9,37 +9,48 @@ import { ICartItem } from '../interfaces/icart-item';
 })
 export class ShoppingCardService {
 
-  private cardItem = new Subject<IProduct>();
+  private shoppingCartSource = new Subject<ICartItem[]>();
+  cartItem = this.shoppingCartSource.asObservable();
 
   cart: ICartItem[] = [];
-  totalQuantity: number;
-
-  movieClicked = this.cardItem.asObservable();
+  totalQuantity: number = 0;
 
   getCart(){
     return this.cart;
   }
 
   addToCard(movie: IProduct){
-    this.cardItem.next(movie);
     let foundMovie = false;
       
         for( let i = 0; i < this.cart.length; i++){
           if(this.cart[i].product.id === movie.id) {
             this.cart[i].amount++;
             foundMovie = true;
-            console.log("movie name + " + movie.name + "movie quantity" + this.cart[i].amount);
           }
         }
 
         if(!foundMovie) {
           this.cart.push({ amount: 1, product: movie});
         }
+      this.shoppingCartSource.next(this.cart);
+    }
+
+    removeFromCard(movie: IProduct){
+      let foundMovie = false;
+        
+          for( let i = 0; i < this.cart.length; i++){
+            if(this.cart[i].product.id === movie.id) {
+              this.cart[i].amount--;
+              foundMovie = true;
+            }
+          }
+        this.shoppingCartSource.next(this.cart);  
     }
 
   getTotal(){
     for( let i = 0; i < this.cart.length; i++){
       this.totalQuantity += this.cart[i].amount;
+   
     }
   }
 }
