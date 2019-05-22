@@ -24,7 +24,6 @@ export class MovieComponent implements OnInit {
         let id = this.movie.id;
         if (data[i].product.id === id){
           this.productQuantity = data[i].amount;
-          // console.log(this.productQuantity);
         }
       }
     })

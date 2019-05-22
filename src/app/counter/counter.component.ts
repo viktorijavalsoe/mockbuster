@@ -12,14 +12,15 @@ export class CounterComponent implements OnInit {
 
   constructor(private shoppingService: ShoppingCardService) { }
   shoppingCart: ICartItem[] = [];
-  totalQuantity = 0;
+  totalQuantity: number;
 
   ngOnInit() {
-    // this.shoppingService.getTotal();
-    // this.totalQuantity  = this.shoppingService.totalQuantity;
-    // console.log("Quantity is "+this.totalQuantity);
-    
+    this.shoppingService.cartItem.subscribe( (data : ICartItem[]) => {
+      this.shoppingService.getTotal();
+      this.totalQuantity  = this.shoppingService.totalQuantity;
+    })
   }
+
   
 }
   
