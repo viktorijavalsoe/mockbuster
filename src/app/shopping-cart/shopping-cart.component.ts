@@ -3,6 +3,9 @@ import { ShoppingCardService } from '../service/shopping-card.service';
 import { IProduct } from '../interfaces/iproduct';
 import { IOrder } from '../interfaces/iorder';
 import { ICartItem } from '../interfaces/icart-item';
+import { IOrderRows } from '../iorder-rows';
+import * as moment from "moment";
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,16 +15,52 @@ import { ICartItem } from '../interfaces/icart-item';
 export class ShoppingCartComponent implements OnInit {
 
 
-  constructor(private shoppingService: ShoppingCardService) { }
+  constructor (
+    private shoppingService: ShoppingCardService, 
+    private dataService: DataService ) { }
+
+
   shoppingCart: ICartItem[] = [];
   totalPrice: number;
+  orderRows: IOrderRows[];
+  order: IOrder;
+  payment;
+  customer;
+
 
   ngOnInit() {
+   
     this.shoppingCart = this.shoppingService.getCart();
-    this.shoppingService.cartItem.subscribe( (data : ICartItem[]) => {
+    
+    this.shoppingService.cartItem.subscribe( (data : ICartItem[]) => { 
+      this.orderRows = this.shoppingService.orderRows;
+      })
+
+    }
+
+    getFormDetails(formValues: any){  
+      const order = this.createOrder(formValues);
+      this.dataService.sendOrder(order);
+    } 
+
+    createOrder(formValues): IOrder {
       this.shoppingService.getTotalPrice();
       this.totalPrice = this.shoppingService.totalPrice;
-      console.log(this.totalPrice); 
-      })
+      
+      this.payment = formValues.payment;
+      this.customer = formValues.email;
+
+      return {
+        companyId : 28,
+        created : moment()
+          .locale("sv")
+          .format("YYYY-MM-DDTLTS"),
+        createdBy : this.customer,
+        payment : this.payment,
+        totalPrice : this.totalPrice,
+        status: 0,
+        orderRows : this.orderRows
+      }
     }
+
   }
