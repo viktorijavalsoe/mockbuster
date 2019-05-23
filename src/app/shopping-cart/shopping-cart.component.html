@@ -1,28 +1,33 @@
-<div class="test">
-  shopping component works!
+<div class="row container">
+  <div class="col-10 md-col-5">
+      <app-register-form (detailsForm)="getFormDetails($event)"></app-register-form>
+{{payment}}
+  </div>
+  <div class="col-10 md-col-5">
+      <div 
+      class="row shopping-cart"
+      *ngFor="let item of shoppingCart">
+        <div class="col-3">
+          <img 
+            class="img-thumbnail"
+            [src]="item.product.imageUrl" alt="">
+        </div>
+        <div class="col-3">
+          {{ item.product.name }}
+        </div>
+        <div class="col-3">
+          {{ item.amount}} 
+        </div>
+    
+        <div class="col-3">
+          {{ item.amount * item.product.price}}
+        </div>
+    </div>
+    
+  </div>
 </div>
 
-<div 
-  class="row shopping-cart"
-  *ngFor="let item of shoppingCart">
-    <div class="col-3">
-      <img 
-        class="img-thumbnail"
-        [src]="item.product.imageUrl" alt="">
-    </div>
-    <div class="col-3">
-      {{ item.product.name }}
-    </div>
-    <div class="col-3">
-      {{ item.amount}} 
-    </div>
 
-    <div class="col-3">
-      {{ item.amount * item.product.price}}
-    </div>
-
-
-</div>
 
 
     

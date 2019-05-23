@@ -6,7 +6,6 @@ import { IProduct } from '../interfaces/iproduct';
 import { IDataService } from '../interfaces/idata-service';
 import { IMovieCategories } from '../interfaces/imovie-categories';
 import { IOrder } from '../interfaces/iorder';
-import { ShoppingCardService } from './shopping-card.service';
 
 
 @Injectable({
@@ -21,8 +20,9 @@ export class DataService implements IDataService {
   //
   orderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders';
 
-  // Eksempel https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText=aliens
   searchURL=' https://medieinstitutet-wie-products.azurewebsites.net/api/search';
+
+  postURL= 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders';
 
   // shoppingCart:IProduct[] = [];
 
@@ -50,6 +50,16 @@ export class DataService implements IDataService {
         // Then handle error
         catchError(this.handleError)
     );    
+  }
+
+  sendOrder(order: IOrder): Observable<IOrder> {
+    console.log(order);
+    
+    return this.http.post<IOrder>(this.orderURL, order)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   getCategories(): Observable<IMovieCategories[]> {

@@ -6,6 +6,7 @@ import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { IMovieCategories } from '../interfaces/imovie-categories';
+import { ICartItem } from '../interfaces/icart-item';
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +86,11 @@ export class MockdataService implements IDataService {
     }
   ];
 
+  cart: ICartItem[] = [];
+  totalQuantity: number;
+  totalPrice: number;
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occured. 
@@ -119,5 +125,5 @@ export class MockdataService implements IDataService {
       catchError(this.handleError)
     )
   };
-
+  
 }

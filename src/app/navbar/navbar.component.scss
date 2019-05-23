@@ -1,3 +1,136 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+$header-font: 'Lobster', cursive;
+$main-font: 'Roboto', sans-serif;
+$detail-color: #BA291F;
+
+.navbar{
+  color: white;
+  background-color: black;
+  padding: 1rem 3rem;
+  font-family: $main-font;
+
+  .navbar-brand{
+    font-family: $header-font;
+    color: $detail-color;
+    font-size: 2rem;
+    text-shadow: 1px 4px 3px white
+  } 
+
+  .navbar-nav{
+    margin-top: 2.8rem;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+
+    .dropdown-menu{
+      background-color: black;
+      color:white;
+      width:300px;
+    
+      .dropdown-item{
+        color: white;
+        font-size: 1.4rem;
+        padding: 1rem;
+      }
+    }
+  }  
+}
+
+a {
+  color: white;
+
+  .fa-shopping-car {
+    vertical-align: bottom;
+  }
+  .counter {
+    height: 25px;
+    width: 25px;
+    background-color: $detail-color;
+    border-radius: 50%;
+    display: inline-block;
+    color: white; 
+ }
+}
+
 .dropdown-toggle {
   cursor: pointer;
 }
+
+
+// Search
+
+form{
+  position: relative;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  transition: all 1s;
+  width: 50px;
+  height: 50px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid white;
+  padding: 5px;
+  margin-top: 3rem;
+  margin-left: 10rem;
+
+
+}
+
+input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;;
+  height: 42.5px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+
+.fa{
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: #07051a;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
+
+form:hover{
+  width: 200px;
+  margin-right: -4rem;
+  cursor: pointer;
+}
+
+form:hover input{
+  display: block;
+}
+
+form:hover .fa{
+  background: #07051a;
+  color: white;
+}
+
+a {
+  .fa-shopping-car{
+    color: white;
+  }
+}
+
+
+
+
+

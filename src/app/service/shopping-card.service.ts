@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct';
 import { Subject } from 'rxjs';
 import { ICartItem } from '../interfaces/icart-item';
+import { IOrderRows } from '../interfaces/iorder-rows';
 
 
 @Injectable({
@@ -10,8 +11,9 @@ import { ICartItem } from '../interfaces/icart-item';
 export class ShoppingCardService {
 
   cart: ICartItem[] = [];
-  totalQuantity: number;
+  totalQuantity: 0;
   totalPrice: number;
+  orderRows: IOrderRows[] = [];
 
   private shoppingCartSource = new Subject<ICartItem[]>();
   cartItem = this.shoppingCartSource.asObservable();
@@ -26,22 +28,23 @@ export class ShoppingCardService {
           if(this.cart[i].product.id === movie.id) {
             this.cart[i].amount++;
             foundMovie = true;
+            this.createOrderRows();  
           }
         }
         if(!foundMovie) {
           this.cart.push({ amount: 1, product: movie});
+          this.createOrderRows();
+          
         }
       this.shoppingCartSource.next(this.cart);
+      
     }
 
-
     removeFromCard(movie: IProduct){
-      let foundMovie = false;
-        
+    
           for( let i = 0; i < this.cart.length; i++){
             if(this.cart[i].product.id === movie.id) {
               this.cart[i].amount--;
-              foundMovie = true;
             }
           }
         this.shoppingCartSource.next(this.cart);  
@@ -56,13 +59,24 @@ export class ShoppingCardService {
 
   getTotalPrice(){
     this.totalPrice = 0;
-    for( let i = 0; i < this.cart.length; i++){
+    for( let i = 0; i < this.cart.length; i++) {
       let pricePerItem = this.cart[i].product.price;
       let amount = this.cart[i].amount;
       let totalPricePerItem = pricePerItem * amount;
       this.totalPrice += totalPricePerItem;
     }
-
-
   }
+
+  createOrderRows(): IOrderRows[] {
+    console.log(this.cart);
+    this.orderRows = [];
+    for (let i = 0; i < this.cart.length; i++) {
+      this.orderRows.push({ productId: this.cart[i].product.id, amount: this.cart[i].amount });
+      }
+      console.log(this.orderRows);
+      
+    return this.orderRows;
+  }
+
 }
+
