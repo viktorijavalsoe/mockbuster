@@ -36,7 +36,6 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit() {  }
 
   submitOrder(){
-    console.log(this.registerForm.value);
     this.detailsForm.emit(this.registerForm.value);
   }
   

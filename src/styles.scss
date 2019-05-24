@@ -1,14 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
 /* Bootstrap */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~src/reset.scss";
+@import "~src/variables";
+@import "~src/mixins";
 
-//Color variables
-$base-color: #141414;
-$font-color: #ccc;
-$detail-color: #e21121;
+
 
 body{
-  background-color: $base-color;
+  background-color: $background-color;
+ 
 }
+
+
+
 
 
