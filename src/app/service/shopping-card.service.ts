@@ -68,13 +68,12 @@ export class ShoppingCardService {
   }
 
   createOrderRows(): IOrderRows[] {
-    console.log(this.cart);
     this.orderRows = [];
     for (let i = 0; i < this.cart.length; i++) {
       this.orderRows.push({ productId: this.cart[i].product.id, amount: this.cart[i].amount });
-      }
+    }
       console.log(this.orderRows);
-      
+
     return this.orderRows;
   }
 

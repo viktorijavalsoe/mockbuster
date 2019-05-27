@@ -15,23 +15,37 @@ export class RegisterFormComponent implements OnInit {
   paymentMethods: string [] = ["Visa", "MasterCard", "Paypal"];
   registerForm = this.fb.group({
       
-    firstName: ['',Validators.required],
-    lastName :['',Validators.required],
-    email :['',Validators.required],
-    address :['',Validators.required],
-    postCode :['',Validators.required],
-    city :['',Validators.required],
-    payment: [' ']
+    firstName: ['Viktorija',Validators.required],
+    lastName :['Vals',Validators.required],
+    email :['viktorija@gmail.com',Validators.required],
+    address :['R;rstrandsgata 40a',Validators.required],
+    postCode :['113 40',Validators.required],
+    city :['Stockholm',Validators.required],
+    payment: ['visa']
     });
   
-  
-  constructor(private fb : FormBuilder) { 
-    
+  constructor(private fb : FormBuilder) {  
   }
 
+  /* Getters */
+
   get firstName(){
-    return this.registerForm.get('firstName')
- }
+    return this.registerForm.get('firstName');
+  }
+  get lastName(){
+    return this.registerForm.get('lastName');
+  }
+  get address(){
+    return this.registerForm.get('address');
+  }
+
+  get postCode(){
+    return this.registerForm.get('address');
+  }
+
+  get city(){
+    return this.registerForm.get('city');
+  }
 
   ngOnInit() {  }
 

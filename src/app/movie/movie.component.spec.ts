@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MovieComponent } from './movie.component';
 import { IProduct } from '../interfaces/iproduct';
 import { MockdataService } from '../service/mockdata.service';

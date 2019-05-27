@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct';
 import { ICartItem } from '../interfaces/icart-item';
 import { ShoppingCardService } from '../service/shopping-card.service';

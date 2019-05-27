@@ -16,11 +16,13 @@
               
       </div>
       <div class="col">
-          <label for="firstname"> First Name</label>
+          <label for="firstname"> Last Name</label>
           <input 
             type="text" 
             formControlName="firstName" 
             class="form-control">
+            <div *ngIf="lastName.touched && lastName.invalid " class="alert alert-danger">
+              Last name is required</div>
       </div> 
     </div>
     <label for="email"> Email</label>

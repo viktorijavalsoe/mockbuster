@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieCategoriesComponent } from './movie-categories/movie-categories.component';
@@ -21,6 +19,8 @@ import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ShoppingCardService } from './service/shopping-card.service';
 import { CounterComponent } from './counter/counter.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { HeroImageComponent } from './hero-image/hero-image.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +31,14 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     ShoppingCartComponent,
     CheckoutComponent,
     OrderSuccessComponent,
-    AdminOrdersComponent,
     PageNotFoundComponent,
     MovieCategoriesComponent,
     MovieComponent,
     ProductModalComponent,
     CounterComponent,
     RegisterFormComponent,
+    HeroImageComponent,
+    AdminPageComponent,
    
   ],
   imports: [

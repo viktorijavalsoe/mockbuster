@@ -17,14 +17,14 @@ export class DataService implements IDataService {
   configURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';
   categoriesURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/categories';
 
-  //
-  orderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders';
+  orderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders/';
+  getOrderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=28';
 
   searchURL=' https://medieinstitutet-wie-products.azurewebsites.net/api/search';
 
-  postURL= 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders';
+  randomURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/random?number=5';
 
-  // shoppingCart:IProduct[] = [];
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -42,7 +42,27 @@ export class DataService implements IDataService {
     );
   }
 
+  getRandomMovie(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]> (this.randomURL)
+      .pipe(
+        // Retry a failed request up to 3 times.
+        retry(3),
+        // Then handle error
+        catchError(this.handleError)
+    );    
+  }
+
   getData(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]> (this.getOrderURL)
+      .pipe(
+        // Retry a failed request up to 3 times.
+        retry(3),
+        // Then handle error
+        catchError(this.handleError)
+    );    
+  }
+
+  getmyOrder(): Observable<IProduct[]> {
     return this.http.get<IProduct[]> (this.configURL)
       .pipe(
         // Retry a failed request up to 3 times.
@@ -53,8 +73,8 @@ export class DataService implements IDataService {
   }
 
   sendOrder(order: IOrder): Observable<IOrder> {
+    // console.log("order service " + order);
     console.log(order);
-    
     return this.http.post<IOrder>(this.orderURL, order)
     .pipe(
       retry(3),
@@ -64,10 +84,6 @@ export class DataService implements IDataService {
 
   getCategories(): Observable<IMovieCategories[]> {
     return this.http.get<IMovieCategories[]>(this.categoriesURL);
-  }
-
-  createOrder(order): Observable<IOrder[]>{
-    return this.http.post<IOrder[]>(this.orderURL, order);
   }
 
 }

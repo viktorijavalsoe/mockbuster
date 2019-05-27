@@ -6,38 +6,16 @@ import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { MovieCategoriesComponent } from './movie-categories/movie-categories.component';
 import { MovieComponent } from './movie/movie.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes: Routes = [
-  // {path: 'categories',
-  //   children: [
-  //     { path: ':id',
-  //       children: [
-  //         {
-  //           path: '',
-  //           component: MovieCategoriesComponent,
-  //         },
-  //         {
-  //           path: 'action/:id'
-  //         },
-  //         {
-  //           path: 'thriller/:id'
-  //         },
-  //         {
-  //           path: 'comedy/:id'
-  //         },
-  //         {
-  //           path: 'sci-fi/:id'
-  //         }
-  //       ]}
-  //   ]},
   {path: 'categories/:id', component: MovieCategoriesComponent},
   {path: 'shopping-cart', component: ShoppingCartComponent},
   {path: 'check-out', component: CheckoutComponent},
   {path: 'order-success', component: OrderSuccessComponent},
-  {path: 'admin/orders', component: AdminOrdersComponent},
+  {path: 'admin/orders', component: AdminPageComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}

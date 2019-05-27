@@ -23,7 +23,6 @@ export class MovieCategoriesComponent implements OnInit {
     
     this.route.paramMap
       .subscribe(categoryParams =>{
-        // console.log(categoryParams)
         let id = +categoryParams.get('id');
         console.log(id);
 
@@ -36,7 +35,7 @@ export class MovieCategoriesComponent implements OnInit {
   };
 
   findMovies(data: IProduct[], categoryId: number) { 
-    
+    this.products = [];
     if(categoryId === 0) {
     for (let i = 0; i < data.length; i++){
       

@@ -19,11 +19,9 @@ export class ShoppingCartComponent implements OnInit {
     private shoppingService: ShoppingCardService, 
     private dataService: DataService ) { }
 
-
   shoppingCart: ICartItem[] = [];
   totalPrice: number;
   orderRows: IOrderRows[];
-  order: IOrder;
   payment;
   customer;
 
@@ -31,22 +29,21 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
    
     this.shoppingCart = this.shoppingService.getCart();
-    
-    this.shoppingService.cartItem.subscribe( (data : ICartItem[]) => { 
-      this.orderRows = this.shoppingService.orderRows;
-      })
-
+    // this.shoppingService.cartItem.subscribe( (data : ICartItem[]) => {      
+    //   });
     }
 
     getFormDetails(formValues: any){  
       const order = this.createOrder(formValues);
-      this.dataService.sendOrder(order);
+      console.log(order);
+      this.dataService.sendOrder(order).subscribe();
     } 
 
     createOrder(formValues): IOrder {
       this.shoppingService.getTotalPrice();
       this.totalPrice = this.shoppingService.totalPrice;
-      
+      this.orderRows = this.shoppingService.orderRows;
+      // console.log(this.orderRows);
       this.payment = formValues.payment;
       this.customer = formValues.email;
 

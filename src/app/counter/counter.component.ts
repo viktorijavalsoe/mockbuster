@@ -19,8 +19,6 @@ export class CounterComponent implements OnInit {
       this.shoppingService.getTotal();
       this.totalQuantity  = this.shoppingService.totalQuantity;
     })
-  }
-
-  
+  } 
 }
   
