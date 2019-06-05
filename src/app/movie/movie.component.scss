@@ -5,36 +5,54 @@
 .btn{
   background-color: $detail-color;
   color: white;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
-.card{
+.card {
   background-color: black;
-  
-}
-.info-button{
-  height: 40px;
-  width: 40px;
-  border-radius: 25px;
-  font-weight: 900; 
-  border: 1px solid white;
-}
 
-.card-footer{
-  padding: 0;
+  .img{
+    height: 500px;
+    margin-bottom: 20px;
+  }
+
+  .card-body {
+    text-align: center;
+
+    .info-button{
+      height: 40px;
+      width: 40px;
+      border-radius: 30px;
+      font-weight: 900; 
+      border: 1px solid white;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .card-title{
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .card-footer{
+    padding: 0;
+  } 
 }
 
 .display_modal{
   display: none;
 }
 
-.img{
-  height: 500px;
-  margin-bottom: 20px;
-}
+
 
 .quantity{
   text-align: center;
   background-color: white;
   color: black;
+  align-self: center;
+  padding: 11px;
+  border-radius: 3px;
 }
 

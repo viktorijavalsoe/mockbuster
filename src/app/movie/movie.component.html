@@ -4,10 +4,11 @@
         <img class="card-img-top img" [src]="movie.imageUrl"  alt="{{ movie.name }}">
   
     <div class="card-body">
-      <div class="row">
-          <h5 class="card-title">{{ movie.name }}</h5>
-          <button class="btn info-button" (click)="toggle()">i</button>
+        <button class="btn info-button" (click)="toggle()">i</button>
+      <div class="row justify-content-center">
+          <h5 class="card-title">{{ movie.name }}</h5>  
       </div>
+      
       <p class="card-text">{{movie.price | currency:"USD"}}</p>
     </div>
     <div class="card-footer">
