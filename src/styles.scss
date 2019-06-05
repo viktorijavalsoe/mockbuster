@@ -8,9 +8,13 @@
 
 
 
-body{
+body, .card{
   background-color: $background-color;
- 
+}
+
+.card{
+  color: white;
+  background-color: $background-color;
 }
 
 

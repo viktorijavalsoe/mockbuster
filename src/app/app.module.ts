@@ -19,7 +19,6 @@ import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ShoppingCardService } from './service/shopping-card.service';
 import { CounterComponent } from './counter/counter.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
-import { HeroImageComponent } from './hero-image/hero-image.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
@@ -37,8 +36,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     ProductModalComponent,
     CounterComponent,
     RegisterFormComponent,
-    HeroImageComponent,
-    AdminPageComponent,
+    AdminPageComponent
    
   ],
   imports: [

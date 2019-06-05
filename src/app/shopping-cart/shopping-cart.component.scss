@@ -1,10 +1,19 @@
-.test{
-  padding-top: 100px;
+@import "~src/reset.scss";
+@import "~src/variables";
+@import "~src/mixins";
+
+.container{
+  margin: 200px 2rem;
+  background-color: white;
+
+  .form{
+    border: 1px solid black;
+    margin: 3rem;
+    padding: 2rem;
+  }
+
+  @include for-desktop-up{
+    max-width: 98%;
+  }
 }
 
-.shopping-cart{
-  color: white;
-}
-.img-thumbnail{
-  border-radius: 25px;
-}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { IProduct } from '../interfaces/iproduct';
 import { IDataService } from '../interfaces/idata-service';
@@ -16,16 +16,15 @@ export class DataService implements IDataService {
 
   configURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';
   categoriesURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/categories';
-
+  randomURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/random?number=1';
   orderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders/';
   getOrderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=28';
+  searchURL= 'https://medieinstitutet-wie-products.azurewebsites.net/api/search';
+  queryString= '?searchText=';
 
-  searchURL=' https://medieinstitutet-wie-products.azurewebsites.net/api/search';
-
-  randomURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/random?number=5';
-
-
-
+  searchResults = new Subject<IProduct[]> ();
+  $searchResult = this.searchResults.asObservable();
+  
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occured. 
@@ -53,7 +52,7 @@ export class DataService implements IDataService {
   }
 
   getData(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]> (this.getOrderURL)
+    return this.http.get<IProduct[]> (this.configURL)
       .pipe(
         // Retry a failed request up to 3 times.
         retry(3),
@@ -62,8 +61,8 @@ export class DataService implements IDataService {
     );    
   }
 
-  getmyOrder(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]> (this.configURL)
+  getmyOrder(): Observable<IOrder[]> {
+    return this.http.get<IOrder[]> (this.getOrderURL)
       .pipe(
         // Retry a failed request up to 3 times.
         retry(3),
@@ -86,5 +85,20 @@ export class DataService implements IDataService {
     return this.http.get<IMovieCategories[]>(this.categoriesURL);
   }
 
-}
+  getSearchResults(products: IProduct[]) : void {
+    this.searchResults.next(products);
+    // return this.searchResults.asObservable();
+  }
 
+  searchMovies(searchTxt: string): Observable<IProduct[] > {
+    if(searchTxt == undefined || searchTxt ===''){
+      return;
+    } else {
+      return this.http.get<IProduct[]>(this.searchURL+this.queryString+searchTxt)
+        .pipe(
+          retry(3),
+          catchError(this.handleError)
+        )
+      }
+    }
+  }

@@ -1,3 +1,25 @@
-<p>
-  admin-page works!
-</p>
+<div class="admin-container">
+  <div class="row">
+    <div class="col-2">Order date</div>
+    <div class="col-2">Customer</div>
+    <div class="col-3">Product Id</div>
+    <div class="col-3">Product Amount</div>
+  </div>
+  <div 
+    *ngFor='let order of myOrders'
+    class="row">
+    <div class="col-2">{{order.id}}</div>
+    <div class="col-2">{{order.created}}</div>
+    <div class="col-2">{{order.createdBy}}</div>
+    <div class="row" *ngFor='let row of order.orderRows'>
+      <div class="col-3" >{{ row.productId}}</div>
+      <div class="col-3">{{ row.amount }}</div>
+    </div>
+    <button class="btn btn-danger" (click)="removeOrder(order)">Remove product</button>
+
+  </div>
+
+  
+</div>
+
+

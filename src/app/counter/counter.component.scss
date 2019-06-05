@@ -1,3 +1,14 @@
-p{
-  margin-left: 8px;
+@import "~src/reset.scss";
+@import "~src/variables";
+@import "~src/mixins";
+
+.counter-number{
+  font-size: 0.8rem;
+  margin-left: 7px;
+
+  @include for-desktop-up { 
+    font-size: 1rem;
+    margin-left: 8px;
+    margin-top: 2px;
+  }
 }

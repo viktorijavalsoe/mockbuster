@@ -89,6 +89,7 @@ export class MockdataService implements IDataService {
   cart: ICartItem[] = [];
   totalQuantity: number;
   totalPrice: number;
+  searchResults: IProduct[] = [];
 
 
   private handleError(error: HttpErrorResponse) {
@@ -125,5 +126,28 @@ export class MockdataService implements IDataService {
       catchError(this.handleError)
     )
   };
-  
+
+  getSearchResults() : Observable< IProduct[] > {
+    return of(this.searchResults).pipe(
+      // Retry a failed request up to 3 times.
+      retry(3),
+      // Then handle error
+      catchError(this.handleError)
+    )
+  };
+
+  searchMovies(searchTxt: string): Observable<IProduct[] > {
+    if(searchTxt == undefined || searchTxt ===''){
+      return;
+    } else {
+      let results = [];
+       for(let i = 0; i < this.products.length; i++) {
+         if(this.products[i].name.indexOf(searchTxt) >= 0) {
+          results.push(this.products[i]);
+         }
+       }
+
+       return of(results);
+    }
+  }
 }

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'shopping-cart', component: ShoppingCartComponent},
   {path: 'check-out', component: CheckoutComponent},
   {path: 'order-success', component: OrderSuccessComponent},
-  {path: 'admin/orders', component: AdminPageComponent},
+  {path: 'admin', component: AdminPageComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}

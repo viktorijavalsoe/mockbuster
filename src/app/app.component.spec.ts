@@ -8,7 +8,6 @@ import { MovieComponent } from './movie/movie.component';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CounterComponent } from './counter/counter.component';
-import { HeroImageComponent } from './hero-image/hero-image.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,9 +24,6 @@ describe('AppComponent', () => {
         MovieComponent,
         ProductModalComponent,
         CounterComponent,
-        HeroImageComponent
-        
-
       ],
     }).compileComponents();
   }));

@@ -12,6 +12,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 import { ActivatedRouteStub } from './testing/activatedRouteStub';
 
+
 describe('MovieCategoriesComponent', () => {
   let testHostComponent: TestHostComponent;
   let testHostFixture: ComponentFixture<TestHostComponent>;
@@ -49,7 +50,7 @@ describe('MovieCategoriesComponent', () => {
     expect(testHostComponent.categories.length).toBeGreaterThan(0);
   })
 
-  it('should contain  4 categories', () => {
+  it('should contain 4 categories', () => {
     expect(testHostComponent.categories.length).toBe(4);
   })
 

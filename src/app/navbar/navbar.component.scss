@@ -2,69 +2,101 @@
 @import "~src/variables";
 @import "~src/mixins";
 
+*:focus {
+  outline: none;
+}
+
 .navbar {
   color: $text-color;
   background-color: black;
   font-family: $sans-serif;
-
+ 
   .navbar-brand {
     font-family: $serif;
     color: $detail-color;
     font-size: 2.5rem;
     margin-right: 0;
+    margin-left: 1rem;
   } 
 
-  .navbar-nav {
+  .navbar-collapse{
+    margin: 1rem;
 
-    .dropdown-menu{
-      background-color: black;
-      color:white;
-      width:300px;
+    .navbar-nav{
+
+      .nav-item {
+
+        .dropdown-menu {
+          background-color:black;
     
-      .dropdown-item{
-        color: white;
-        
+          .dropdown-item {
+            color:white;
+            cursor: pointer;
+    
+            &:hover{
+              color: $detail-color;
+            }
+          }
+        }
       }
-    }
-  }  
+    }  
+  } 
 
+  a {
+    .counter {
+      height: 20px;
+      width: 20px;
+      background-color: $detail-color;
+      border-radius: 50%;
+      display: inline-block;
+      color: white; 
+    }
+      
+    .fa-shopping-cart {
+      color: white;
+      vertical-align: bottom;
+    }
+  }
+
+  .btn-search {
+    color: $detail-color;
+    border-color: $detail-color;
+
+  }
+   
   @include for-desktop-up {  
       padding: 1rem 3rem;
-  }
 
+      .navbar-brand {
+        font-size: 4rem;
+      }
+
+      .navbar-collapse {
+
+        .nav-link {
+          font-size: 1.8rem;
+        }
+      
+        form {
+          input, .btn-search {
+            font-size: 1.5rem;
+          } 
+        }  
+      }
+
+      a {
+        .counter {
+          height: 25px;
+          width: 25px;
+        }
+      }
+
+      .fa-shopping-cart{
+        font-size: 2rem;
+      }
+    }
 }
 
-a {
-  color: white;
-
-  .fa-shopping-car {
-    vertical-align: bottom;
-  }
-  .counter {
-    height: 25px;
-    width: 25px;
-    background-color: $detail-color;
-    border-radius: 50%;
-    display: inline-block;
-    color: white; 
- }
-}
-
-.dropdown-toggle {
-  cursor: pointer;
-}
-
-a {
-  .fa-shopping-car{
-    color: white;
-  }
-}
-
-/* Desktop */
-
-@media (min-width: 992px) {
-
-}
 
 
 

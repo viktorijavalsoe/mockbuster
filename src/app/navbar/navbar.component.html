@@ -9,8 +9,7 @@
     aria-controls="navbarTogglerDemo03" 
     aria-expanded="false" 
     aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon">
-    </span>
+    <span class="navbar-toggler-icon"></span>
   </button>
 
   <!-- Navbar brand -->
@@ -50,19 +49,26 @@
             *ngFor="let category of categories" 
             ngbDropdownItem class="dropdown-item dropdown-item-action"
             [routerLink]="['/categories',category.id]">
-            {{ category.name}}
+            {{ category.name }}
           </a>
         </div>
       </li> 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
+    <form class="form-inline my-2 my-lg-0 ml-auto">
+      <input 
+        #searchtext
+        (keyup.enter)='searchMovies(searchtext.value); searchtext.value =""'
+        class="form-control mr-sm-2" 
+        type="search" 
+        placeholder="Search" 
+        aria-label="Search"/>
+      <button   
+        class="btn btn-search my-2 my-sm-0 d-none d-md-block" 
+        type="submit"
+        (click)='searchMovies(searchtext.value); searchtext.value =""'>Search</button>
+    </form> 
   </div>
-
-  
-
 </nav>
 
 

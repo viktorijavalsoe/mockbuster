@@ -29,8 +29,8 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
    
     this.shoppingCart = this.shoppingService.getCart();
-    // this.shoppingService.cartItem.subscribe( (data : ICartItem[]) => {      
-    //   });
+    this.shoppingService.getTotalPrice();
+      this.totalPrice = this.shoppingService.totalPrice;
     }
 
     getFormDetails(formValues: any){  
@@ -40,10 +40,10 @@ export class ShoppingCartComponent implements OnInit {
     } 
 
     createOrder(formValues): IOrder {
-      this.shoppingService.getTotalPrice();
-      this.totalPrice = this.shoppingService.totalPrice;
+      // this.shoppingService.getTotalPrice();
+      // this.totalPrice = this.shoppingService.totalPrice;
       this.orderRows = this.shoppingService.orderRows;
-      // console.log(this.orderRows);
+      console.log(this.totalPrice);
       this.payment = formValues.payment;
       this.customer = formValues.email;
 

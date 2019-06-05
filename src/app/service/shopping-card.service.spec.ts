@@ -14,7 +14,6 @@ describe('ShoppingCardService', () => {
 
   it ('should add movie to card', () => {
     const service: ShoppingCardService = TestBed.get(ShoppingCardService);
-    
     const data = new MockdataService();
     
     data.getData().subscribe(movies => {

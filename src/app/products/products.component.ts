@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
 import * as moment from 'moment';
 import { IMovieCategories } from '../interfaces/imovie-categories';
+import { IProduct } from '../interfaces/iproduct';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { IMovieCategories } from '../interfaces/imovie-categories';
 })
 export class ProductsComponent implements OnInit {
   categories: IMovieCategories[];
+  searchResults: IProduct[] = [];
 
   constructor(
     private service: DataService
@@ -21,6 +23,14 @@ export class ProductsComponent implements OnInit {
     .subscribe((categories: IMovieCategories[]) => {
       this.categories = categories;
     })
+
+    this.service.$searchResult
+      .subscribe((searchResults: IProduct[]) => {
+        console.log('In movie-category: ', searchResults);
+        this.searchResults = searchResults;
+      }
+    );
   }; 
+
   
 }

@@ -1,26 +1,22 @@
-/* Color variables */
-$base-color: #141414;
-$font-color: #ccc;
-$detail-color: #e21121;
+@import "~src/reset.scss";
+@import "~src/variables";
+@import "~src/mixins";
 
 .btn{
   background-color: $detail-color;
   color: white;
 }
 
-.counter-btn{
- 
-
-}
-
 .card{
-  background-color: $base-color;
+  background-color: black;
+  
 }
 .info-button{
   height: 40px;
   width: 40px;
   border-radius: 25px;
   font-weight: 900; 
+  border: 1px solid white;
 }
 
 .card-footer{

@@ -13,14 +13,14 @@ export class MovieCategoriesComponent implements OnInit {
   @Input() category: IMovieCategories;
 
   products: IProduct[] = [];
+  searchResults: IProduct[] = [];
   
   constructor( 
     private service : DataService,
     private route : ActivatedRoute ) 
-    { }
+    {  }
 
-  ngOnInit() {
-    
+  ngOnInit() {  
     this.route.paramMap
       .subscribe(categoryParams =>{
         let id = +categoryParams.get('id');
@@ -32,7 +32,7 @@ export class MovieCategoriesComponent implements OnInit {
           } 
         ); 
       });
-  };
+    };
 
   findMovies(data: IProduct[], categoryId: number) { 
     this.products = [];

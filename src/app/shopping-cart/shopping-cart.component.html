@@ -1,9 +1,25 @@
-<div class="row container">
-  <div class="col-10 md-col-5">
-      <app-register-form (detailsForm)="getFormDetails($event)"></app-register-form>
-{{payment}}
+
+<div class="container">
+  <h2>Total amount to pay {{ totalPrice }}</h2>
+
+  <div class="row">
+    <div class="col form">
+        <app-register-form (detailsForm)="getFormDetails($event)"></app-register-form>
+        {{payment}}
+    </div>
+    <div class="col">
+      hello world
+    </div>
+
   </div>
-  <div class="col-10 md-col-5">
+
+
+  <!-- <div class="col-10 md-col-4 form">
+      <app-register-form (detailsForm)="getFormDetails($event)"></app-register-form>
+        {{payment}}
+  </div>
+
+  <div class="col-10 md-col-6 order-summary">
       <div 
       class="row shopping-cart"
       *ngFor="let item of shoppingCart">
@@ -24,7 +40,7 @@
         </div>
     </div>
     
-  </div>
+  </div> -->
 </div>
 
 
