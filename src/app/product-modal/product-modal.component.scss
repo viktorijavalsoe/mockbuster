@@ -26,18 +26,24 @@
     border: 1px solid #888;
     width: 95%;
     
-
-    .close{
+    .close {
       color: white;
       font-size: 40px;
-      padding-bottom: 2rem;
       margin-left: auto;
-      padding-right: 1rem;
+      padding: 2rem 1rem 2rem 0;
       font-weight: 500;
     }
+
+    .product-description{
+      background: linear-gradient(to right, rgba(0,0,0,1) 79%, rgba(0,0,0,0.82) 90%, rgba(0,0,0,0) 100%);
+      margin-right: -10rem;
+      z-index: 2;
+      padding: 2rem 8rem 0 2rem;
+    }
+
       .score-container{
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
 
         .fa-star{
           color: #e8b707;
@@ -48,12 +54,9 @@
     }
   @include for-desktop-up{
     .modal-wrapper{
-      padding: 4rem;
       width: 70%;
     }
 
-    .movie-img-top{
-      height: 80%;
-    }
   }
 }
+

@@ -1,27 +1,26 @@
-
  <div class="info-modal" [class.display-modal]="noDisplay">
   
     <div class="modal-wrapper">
       <div class="row">
         <span class="close" (click)="closeModal()">&times;</span>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-            <h2 class="product-title">{{movieInfo.name}}</h2><p>({{ movieInfo.year }})</p>
-            <div class="row score-container">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>    
-            </div>
-          <p>{{ movieInfo.description }}</p>
+      </div> 
+        <div class="row">
+          <div class="col product-description">
+              <h2 class="product-title">{{movieInfo.name}}</h2><p>({{ movieInfo.year }})</p>
+              <div class="row score-container">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>    
+              </div>
+            <p>{{ movieInfo.description }}</p>
+          </div>
+          <div class="col d-none d-md-block product-image">
+            <img class="movie-img-top" [src]="movieInfo.imageUrl"  alt="{{ movieInfo.name }}">
+          </div>
         </div>
-        <div class="col d-none d-md-block">
-          <img class="movie-img-top" [src]="movieInfo.imageUrl"  alt="{{ movieInfo.name }}">
-        </div>
-      </div>
+
     </div>
     
  </div>
