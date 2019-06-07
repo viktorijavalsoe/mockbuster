@@ -1,14 +1,13 @@
-/* Color variables */
+@import "~src/reset.scss";
+@import "~src/variables";
+@import "~src/mixins";
 
-$base-color: #141414;
-$font-color: #ccc;
-$detail-color: #e21121;
 
 /* Headlines with lines */
 .decorated{
   overflow: hidden;
   text-align: center;
-  color: $font-color;
+  color: $text-color;
   padding: 50px 0 50px 0;
 }
 .decorated > span{
@@ -42,10 +41,9 @@ $detail-color: #e21121;
 
   .card {
     flex: 0 0 auto;
-    color: $font-color;
-    background-color: $base-color;
-    margin: 1rem;
-
+    color: $text-color;
+    background-color: $background-color;
+    margin-right: 1rem;
   }
 }
 
