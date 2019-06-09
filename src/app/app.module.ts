@@ -9,7 +9,6 @@ import { ProductsComponent } from './products/products.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +27,6 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     NavbarComponent,
     HomeComponent,
     ShoppingCartComponent,
-    CheckoutComponent,
     OrderSuccessComponent,
     PageNotFoundComponent,
     MovieCategoriesComponent,
