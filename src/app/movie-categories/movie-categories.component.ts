@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MovieCategoriesComponent implements OnInit {
   @Input() category: IMovieCategories;
-
+  
   products: IProduct[] = [];
   searchResults: IProduct[] = [];
   

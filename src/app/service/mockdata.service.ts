@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IDataService } from '../interfaces/idata-service';
 import { IProduct } from '../interfaces/iproduct';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, of, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { IMovieCategories } from '../interfaces/imovie-categories';
@@ -85,13 +85,31 @@ export class MockdataService implements IDataService {
       name: "Sci-fi"
     }
   ];
+  
+  searchResults: IProduct[] = [
+    {
+      id: 76,
+      name: 'The Dark Knight',
+      description: 'When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice',
+      price: 199,
+      imageUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg',
+      year: 2008,
+      added: '2016-01-05T00:00:00',
+      productCategory:[
+        {
+          categoryId: 5,
+          category: null},
+        { categoryId: 6,
+          category: null
+        }
+      ]
+    },
+  ];
 
   cart: ICartItem[] = [];
   totalQuantity: number;
   totalPrice: number;
-  searchResults: IProduct[] = [];
-
-
+  
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occured. 
@@ -127,7 +145,7 @@ export class MockdataService implements IDataService {
     )
   };
 
-  getSearchResults() : Observable< IProduct[] > {
+  getSearchResults(): Observable< IProduct[] > {
     return of(this.searchResults).pipe(
       // Retry a failed request up to 3 times.
       retry(3),

@@ -16,7 +16,6 @@ export class DataService implements IDataService {
 
   configURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';
   categoriesURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/categories';
-  randomURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/random?number=1';
   orderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders/';
   getOrderURL = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=28';
   searchURL= 'https://medieinstitutet-wie-products.azurewebsites.net/api/search';
@@ -39,16 +38,6 @@ export class DataService implements IDataService {
     return throwError(
       'Oopsy, something bad happened. Please try again later'
     );
-  }
-
-  getRandomMovie(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]> (this.randomURL)
-      .pipe(
-        // Retry a failed request up to 3 times.
-        retry(3),
-        // Then handle error
-        catchError(this.handleError)
-    );    
   }
 
   getData(): Observable<IProduct[]> {
@@ -87,7 +76,6 @@ export class DataService implements IDataService {
 
   getSearchResults(products: IProduct[]) : void {
     this.searchResults.next(products);
-    // return this.searchResults.asObservable();
   }
 
   searchMovies(searchTxt: string): Observable<IProduct[] > {
