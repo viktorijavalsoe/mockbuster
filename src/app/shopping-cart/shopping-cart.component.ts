@@ -56,12 +56,28 @@ export class ShoppingCartComponent implements OnInit {
       }
     }
 
-    addMovie(){
-          
+    addMovie(id){
+      for(let i = 0; i < this.shoppingCart.length; i++){
+        if(this.shoppingCart[i].product.id === id){
+          this.shoppingCart[i].amount++;
+          this.shoppingService.getTotalPrice();
+          this.totalPrice = this.shoppingService.totalPrice;
+        }
+      }   
     }
   
-    removeMovie(){
-          
+    removeMovie(id){
+      for(let i = 0; i < this.shoppingCart.length; i++){
+        if(this.shoppingCart[i].product.id === id){
+          if(this.shoppingCart[i].amount === 0){
+            console.log(this.shoppingCart[i].amount);
+            this.shoppingCart.splice(i, 1);
+          }else{
+          this.shoppingCart[i].amount--;
+          this.shoppingService.getTotalPrice();
+          this.totalPrice = this.shoppingService.totalPrice;
+          }
+        }
+      }        
     }
-
   }

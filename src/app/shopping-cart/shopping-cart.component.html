@@ -19,22 +19,22 @@
             <div class="col-2">
                 {{ item.product.price }} sek
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
               {{ item.amount }}
-            </div>
-              <!-- <div class="row">
+            </div> -->
+              <div class="row">
                 <div class="col-3 counter-btn">
                     <button class="btn btn-danger btn-block"
-                    (click)="removeMovie(item.product)">-</button>
+                    (click)="removeMovie(item.product.id)">-</button>
                   </div>
                   <div class="col quantity">
                     {{ item.amount }}
                   </div>
                   <div class="col-3 counter-btn">
                     <button class="btn btn-danger btn-block"
-                    (click)="addMovie(item.product)">+</button>
+                    (click)="addMovie(item.product.id)">+</button>
                   </div>
-              </div>   -->
+              </div>  
             
             <div class="col-2">
               {{ item.amount * item.product.price}} sek
