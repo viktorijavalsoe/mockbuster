@@ -29,21 +29,3 @@
  left: 100%;
 }
 
-/* Horizontally scrolled sections */
-.scrolling-wrapper{
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-
-    &::-webkit-scrollbar {
-    display: none;
-  }
-
-  .card {
-    flex: 0 0 auto;
-    color: $text-color;
-    background-color: $background-color;
-    margin-right: 1rem;
-  }
-}
-

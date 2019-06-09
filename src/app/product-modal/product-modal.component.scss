@@ -22,15 +22,14 @@
     background-color:black;
     color: white;
     margin: auto;
-    padding:  0 1rem 4rem 1rem;
-    border: 1px solid #888;
+    padding: 2rem;
     width: 95%;
     
     .close {
       color: white;
       font-size: 40px;
       margin-left: auto;
-      padding: 2rem 1rem 2rem 0;
+      padding: 0 1rem 2rem 0;
       font-weight: 500;
     }
 
@@ -47,14 +46,14 @@
 
         .fa-star{
           color: #e8b707;
-          font-size: 1.5rem;
+          font-size: 1rem;
           margin-left: 1rem;
         }
       }    
     }
   @include for-desktop-up{
     .modal-wrapper{
-      width: 70%;
+      width: 60%;
     }
 
   }

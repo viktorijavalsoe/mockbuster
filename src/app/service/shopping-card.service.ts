@@ -24,56 +24,52 @@ export class ShoppingCardService {
 
   addToCard(movie: IProduct){
     let foundMovie = false;
-        for( let i = 0; i < this.cart.length; i++){
-          if(this.cart[i].product.id === movie.id) {
-            this.cart[i].amount++;
-            foundMovie = true;
-            this.createOrderRows();  
-          }
+      for( let i = 0; i < this.cart.length; i++){
+        if(this.cart[i].product.id === movie.id) {
+          this.cart[i].amount++;
+          foundMovie = true;
+          this.createOrderRows();  
         }
-        if(!foundMovie) {
-          this.cart.push({ amount: 1, product: movie});
-          this.createOrderRows();
-          
-        }
-      this.shoppingCartSource.next(this.cart);
-      
-    }
+      }
+      if(!foundMovie) {
+        this.cart.push({ amount: 1, product: movie});
+        this.createOrderRows();
+        
+      }
+  this.shoppingCartSource.next(this.cart);    
+  }
 
-    removeFromCard(movie: IProduct){
-    
-          for( let i = 0; i < this.cart.length; i++){
-            if(this.cart[i].product.id === movie.id) {
-              this.cart[i].amount--;
-            }
-          }
-        this.shoppingCartSource.next(this.cart);  
+  removeFromCard(movie: IProduct){ 
+    for( let i = 0; i < this.cart.length; i++){
+      if(this.cart[i].product.id === movie.id) {
+        this.cart[i].amount--;
+      }
     }
+  this.shoppingCartSource.next(this.cart);  
+  }
 
   getTotal(){
     this.totalQuantity = 0;
-    for( let i = 0; i < this.cart.length; i++){
-      this.totalQuantity += this.cart[i].amount;
+      for( let i = 0; i < this.cart.length; i++){
+        this.totalQuantity += this.cart[i].amount;
     }
   }
 
   getTotalPrice(){
     this.totalPrice = 0;
-    for( let i = 0; i < this.cart.length; i++) {
-      let pricePerItem = this.cart[i].product.price;
-      let amount = this.cart[i].amount;
-      let totalPricePerItem = pricePerItem * amount;
-      this.totalPrice += totalPricePerItem;
+      for( let i = 0; i < this.cart.length; i++) {
+        let pricePerItem = this.cart[i].product.price;
+        let amount = this.cart[i].amount;
+        let totalPricePerItem = pricePerItem * amount;
+        this.totalPrice += totalPricePerItem;
     }
   }
 
   createOrderRows(): IOrderRows[] {
     this.orderRows = [];
-    for (let i = 0; i < this.cart.length; i++) {
-      this.orderRows.push({ productId: this.cart[i].product.id, amount: this.cart[i].amount });
+      for (let i = 0; i < this.cart.length; i++) {
+        this.orderRows.push({ productId: this.cart[i].product.id, amount: this.cart[i].amount });
     }
-      console.log(this.orderRows);
-
     return this.orderRows;
   }
 

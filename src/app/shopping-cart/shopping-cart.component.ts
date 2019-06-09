@@ -24,10 +24,8 @@ export class ShoppingCartComponent implements OnInit {
   orderRows: IOrderRows[];
   payment;
   customer;
-
-
+ 
   ngOnInit() {
-   
     this.shoppingCart = this.shoppingService.getCart();
     this.shoppingService.getTotalPrice();
       this.totalPrice = this.shoppingService.totalPrice;
@@ -40,8 +38,6 @@ export class ShoppingCartComponent implements OnInit {
     } 
 
     createOrder(formValues): IOrder {
-      // this.shoppingService.getTotalPrice();
-      // this.totalPrice = this.shoppingService.totalPrice;
       this.orderRows = this.shoppingService.orderRows;
       console.log(this.totalPrice);
       this.payment = formValues.payment;
@@ -58,6 +54,14 @@ export class ShoppingCartComponent implements OnInit {
         status: 0,
         orderRows : this.orderRows
       }
+    }
+
+    addMovie(){
+          
+    }
+  
+    removeMovie(){
+          
     }
 
   }

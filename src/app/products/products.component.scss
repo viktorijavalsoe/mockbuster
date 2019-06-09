@@ -2,15 +2,12 @@
 @import "~src/variables";
 @import "~src/mixins";
 
-.cateroriesContainer{
-  margin-top: 80px;
-  margin-left: 1rem;
-  margin-right: 1rem;
+.caterories-container{
+  margin: 80px 1rem;
 
   @include for-tablet-landscape-up {
     margin-top: 200px;
     margin-left: 2rem;
     margin-right: 2rem;
-
   }
 }

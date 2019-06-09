@@ -1,11 +1,11 @@
-<div class="cateroriesContainer">
+<div class="caterories-container">
   <div class="scrolling-wrapper">
-      <app-movie
-        class="card"
-        *ngFor="let result of searchResults; let i = index" 
-        [movie]="result">
-      </app-movie>   
-    </div>
+    <app-movie
+      class="card"
+      *ngFor="let result of searchResults; let i = index" 
+      [movie]="result">
+    </app-movie>   
+  </div>
   
   <div>
     <app-movie-categories

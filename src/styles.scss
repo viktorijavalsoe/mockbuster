@@ -12,10 +12,25 @@ body, .card{
   background-color: $background-color;
 }
 
-.card{
-  color: white;
-  background-color: $background-color;
-  height: 760px;
+/* Horizontally scrolled sections */
+.scrolling-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0.5rem;
+
+    &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 auto;
+    color: $text-color;
+    background-color: $background-color;
+    margin-right: 1rem;
+    height: 780px;
+    color: white;
+  }
 }
 
 
