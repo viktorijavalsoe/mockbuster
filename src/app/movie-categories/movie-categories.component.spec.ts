@@ -36,7 +36,6 @@ describe('MovieCategoriesComponent', () => {
   }));
 
   beforeEach(() => {
-
     testHostFixture = TestBed.createComponent(TestHostComponent);
     testHostComponent = testHostFixture.componentInstance;
     testHostFixture.detectChanges();
