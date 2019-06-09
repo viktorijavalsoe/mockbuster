@@ -9,7 +9,7 @@
           <h5 class="card-title">{{ movie.name }}</h5>  
       </div>
       
-      <p class="card-text">{{ movie.price }} sek</p>
+      <p class="card-text">{{movie.price | currency:"USD"}}</p>
     </div>
     <div class="card-footer">
       <button 
