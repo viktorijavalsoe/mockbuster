@@ -1,49 +1,54 @@
 
 <div class="container">
-  <h2>Total amount to pay {{ totalPrice }}</h2>
-
-  <div class="row">
-
-      <div class="col-10 col-md-4 order-md-12">
-          <div 
-            class="row shopping-cart"
-            *ngFor="let item of shoppingCart">
-            <div class="col-12">
-                {{ item.product.name }}
+  <div class="row justify-content-center">
+    <div class="col-10 col-md-4 order-md-12 wrapper">
+      <div class="row justify-content-center">
+        <div class="header">Shopping Cart</div>
+      </div>
+      <hr>
+      <div 
+        class="row shopping-cart"
+        *ngFor="let item of shoppingCart">
+          <div class="col-12 product-name">
+              {{ item.product.name }}
+          </div>
+          <div class="col-4">
+            <img 
+              class="img-thumbnail"
+              [src]="item.product.imageUrl" alt="">
+          </div>
+          <div class="col-1">
+              {{ item.product.price }} sek
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-3">
+              <button class="btn btn-counter"
+              (click)="removeMovie(item.product.id)">-</button>
             </div>
-            <div class="col-4">
-              <img 
-                class="img-thumbnail"
-                [src]="item.product.imageUrl" alt="">
-            </div>
-            <div class="col-2">
-                {{ item.product.price }} sek
-            </div>
-            <!-- <div class="col-4">
+            <div class="col-1 quantity">
               {{ item.amount }}
-            </div> -->
-              <div class="row">
-                <div class="col-3 counter-btn">
-                    <button class="btn btn-danger btn-block"
-                    (click)="removeMovie(item.product.id)">-</button>
-                  </div>
-                  <div class="col quantity">
-                    {{ item.amount }}
-                  </div>
-                  <div class="col-3 counter-btn">
-                    <button class="btn btn-danger btn-block"
-                    (click)="addMovie(item.product.id)">+</button>
-                  </div>
-              </div>  
-            
-            <div class="col-2">
-              {{ item.amount * item.product.price}} sek
             </div>
+            <div class="col-3">
+              <button class="btn btn-counter"
+              (click)="addMovie(item.product.id)">+</button>
+            </div>
+          </div>  
+          <div class="col-12">
+            Total {{ item.amount * item.product.price}} sek
+            <hr>
+          </div>
+        </div>
+        <div class="row justify-content-center header-highlighted">
+          <div>Total amount to pay {{ totalPrice }} sek</div>
         </div>
       </div>
       
-    <div class="col-10 col-md-5 form ">
-        <app-register-form (detailsForm)="getFormDetails($event)"></app-register-form>
+    <div class="col-10 col-md-5 wrapper">
+      <div class="row justify-content-center">
+        <div class="header">Register form</div>
+      </div>
+      <hr>
+      <app-register-form (detailsForm)="getFormDetails($event)"></app-register-form>
     </div>
 
   </div>

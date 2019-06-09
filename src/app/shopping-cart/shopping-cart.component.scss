@@ -6,10 +6,43 @@
   margin-top: 150px;
   background-color: white;
 
+  .wrapper{
+    margin: 2rem;
+  }
+
   .form{
     border: 1px solid black;
-    margin: 3rem;
-    padding: 2rem;
+    
+    // padding: 2rem;
+  }
+  
+  .header{
+    font-size: 1.5rem;
+  }
+
+  .header-highlighted{
+    font-size: 1.2rem;
+    background-color: $detail-color;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .shopping-cart{
+    .product-name{
+      margin: 2rem 0;
+      font-weight: 700;
+    }
+
+    .btn-counter{
+      border-radius: 50%;
+      border: 1px solid $light-detail;
+    }
+  
+    .quantity{
+      margin-top: 0.5rem;
+      margin-left: 0.6rem;
+    }
   }
 
   @include for-desktop-up{
