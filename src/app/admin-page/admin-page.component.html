@@ -1,25 +1,33 @@
 <div class="admin-container">
-  <div class="row">
-    <div class="col-2">Order date</div>
-    <div class="col-2">Customer</div>
-    <div class="col-3">Product Id</div>
-    <div class="col-3">Product Amount</div>
-  </div>
-  <div 
-    *ngFor='let order of myOrders'
-    class="row">
-    <div class="col-2">{{order.id}}</div>
-    <div class="col-2">{{order.created}}</div>
-    <div class="col-2">{{order.createdBy}}</div>
-    <div class="row" *ngFor='let row of order.orderRows'>
-      <div class="col-3" >{{ row.productId}}</div>
-      <div class="col-3">{{ row.amount }}</div>
-    </div>
-    <button class="btn btn-danger" (click)="removeOrder(order)">Remove product</button>
-
-  </div>
-
-  
+  <table class="table .table-borderless">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Order ID</th>
+          <th scope="col">Order date</th>
+          <th scope="col">Customer</th>
+          <th scope="col">Movie</th>
+          <!-- <th scope="col">Product Amount</th> -->
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor='let order of myOrders'>
+            <th scope="row">{{ order.id }}</th>
+            <td>{{ order.created | date:'M/d/yyyy HH:mm:ss' }}</td>
+            <td>{{ order.createdBy }}</td>
+            <div class="order-rows" *ngFor='let row of order.orderRows'>
+              <td>ID: {{ row.productId }}</td> 
+              <td>Amount: {{ row.amount }}</td> 
+            </div>
+              <td>
+                <button class="btn" (click)="removeOrder(order.id)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+        </tr>
+      </tbody>
+    </table>
 </div>
+
 
 

@@ -20,12 +20,13 @@ export class AdminPageComponent implements OnInit {
         })
     }
 
-    removeOrder(order: IOrder){
-      for(let i = 0; i < this.myOrders.length; i++) {
-        const order = this.myOrders[i];
-        if (order.companyId === order.companyId){
-          this.myOrders.splice(i, 1);
-        }
-      }
+    removeOrder(id){
+      this.service.deleteOrder(id)
+        .subscribe(data => {
+          this.service.getmyOrder()
+          .subscribe((orders) => {
+            this.myOrders = orders;
+          })
+        })
     }
   }

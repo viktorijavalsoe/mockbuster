@@ -42,9 +42,7 @@ export class MovieCategoriesComponent implements OnInit {
       const product = data[i];
       const productCategories = product.productCategory;
         for (let j = 0; j < productCategories.length; j++){
-          
-          if (productCategories[j].categoryId == this.category.id){
-            
+          if (productCategories[j].categoryId == this.category.id){  
             this.products.push(product);
             }
           } 
@@ -61,13 +59,10 @@ export class MovieCategoriesComponent implements OnInit {
       })
 
       for (let i = 0; i < data.length; i++){
-      
         const product = data[i];
         const productCategories = product.productCategory;
-          for (let j = 0; j < productCategories.length; j++){
-            
-            if (productCategories[j].categoryId == categoryId){
-              
+          for (let j = 0; j < productCategories.length; j++){ 
+            if (productCategories[j].categoryId == categoryId){ 
               this.products.push(product);
               }
             } 

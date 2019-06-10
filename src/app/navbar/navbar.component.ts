@@ -31,9 +31,7 @@ export class NavbarComponent implements OnInit {
   }; 
 
   searchMovies(query: string){
-    console.log('Searching: ', query);
     this.service.searchMovies(query).subscribe(searchResult => {
-      console.log(searchResult);
       this.service.getSearchResults(searchResult);
     });
   }

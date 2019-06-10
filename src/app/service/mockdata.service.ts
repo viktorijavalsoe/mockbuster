@@ -86,7 +86,7 @@ export class MockdataService implements IDataService {
     }
   ];
   
-  searchResults: IProduct[] =  this.products;
+  $searchResult = of(this.products);
 
   cart: ICartItem[] = [];
   totalQuantity: number;
@@ -128,7 +128,7 @@ export class MockdataService implements IDataService {
   };
 
   getSearchResults(): Observable< IProduct[] > {
-    return of(this.searchResults).pipe(
+    return this.$searchResult.pipe(
       // Retry a failed request up to 3 times.
       retry(3),
       // Then handle error
@@ -146,7 +146,6 @@ export class MockdataService implements IDataService {
           results.push(this.products[i]);
          }
        }
-
        return of(results);
     }
   }

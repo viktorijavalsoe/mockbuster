@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCardService } from '../service/shopping-card.service';
-import { IProduct } from '../interfaces/iproduct';
 import { IOrder } from '../interfaces/iorder';
 import { ICartItem } from '../interfaces/icart-item';
 import { IOrderRows } from '../iorder-rows';
@@ -14,6 +13,8 @@ import { DataService } from '../service/data.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
+  checkoutVisibility: boolean = true;
+  checkIfEmpty: boolean = false;
 
   constructor (
     private shoppingService: ShoppingCardService, 
@@ -28,12 +29,12 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     this.shoppingCart = this.shoppingService.getCart();
     this.shoppingService.getTotalPrice();
-      this.totalPrice = this.shoppingService.totalPrice;
+    this.totalPrice = this.shoppingService.totalPrice;
+    this.isEmpty(); 
     }
 
     getFormDetails(formValues: any){  
       const order = this.createOrder(formValues);
-      console.log(order);
       this.dataService.sendOrder(order).subscribe();
     } 
 
@@ -59,12 +60,25 @@ export class ShoppingCartComponent implements OnInit {
     addMovie(product){
       this.shoppingService.addToCard(product);
       this.shoppingService.getTotalPrice();
-      this.totalPrice = this.shoppingService.totalPrice;  
+      this.totalPrice = this.shoppingService.totalPrice; 
+      this.isEmpty();  
     }
   
     removeMovie(product){
       this.shoppingService.removeFromCard(product);
       this.shoppingService.getTotalPrice();
-      this.totalPrice = this.shoppingService.totalPrice;       
+      this.totalPrice = this.shoppingService.totalPrice; 
+      this.isEmpty();      
+    }
+
+    isEmpty(){
+      if(this.shoppingCart.length > 0){
+        console.log(this.shoppingCart.length);
+        this.checkoutVisibility = false;
+        this.checkIfEmpty = true;
+      }else {
+        this.checkoutVisibility = true;
+        this.checkIfEmpty = false;
+      }
     }
   }

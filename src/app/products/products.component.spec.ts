@@ -59,7 +59,7 @@ describe('ProductsComponent', () => {
     template: '<app-movie class="card" *ngFor="let results of searchResults; let i = index" [movie]="results"></app-movie>' 
   })
   class TestHostComponent {
-    searchResults: IProduct[];
+    searchResults: IProduct[] = [];
     
     constructor(private service: MockdataService) { }
     ngOnInit() {

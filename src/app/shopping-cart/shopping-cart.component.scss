@@ -2,9 +2,22 @@
 @import "~src/variables";
 @import "~src/mixins";
 
+.display{
+  display: none;
+}
 .container{
   margin-top: 150px;
   background-color: white;
+
+  .display{
+    display: none;
+  }
+
+  .notification{
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+  }
 
   .wrapper{
     margin: 2rem;
@@ -12,8 +25,6 @@
 
   .form{
     border: 1px solid black;
-    
-    // padding: 2rem;
   }
   
   .header{

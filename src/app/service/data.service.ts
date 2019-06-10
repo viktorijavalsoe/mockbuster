@@ -61,13 +61,22 @@ export class DataService implements IDataService {
   }
 
   sendOrder(order: IOrder): Observable<IOrder> {
-    // console.log("order service " + order);
     console.log(order);
     return this.http.post<IOrder>(this.orderURL, order)
     .pipe(
       retry(3),
       catchError(this.handleError)
     );
+  }
+
+  deleteOrder(id: number): Observable<IOrder[]> {
+    // const orderToDeleteUrl: string = `https://medieinstitutet-wie-products.azurewebsites.net/api/orders/${id}`;
+    const orderToDeleteUrl: string = this.orderURL+id;
+    return this.http.delete<IOrder[]>(orderToDeleteUrl)
+      .pipe(
+        retry(3),
+          catchError(this.handleError)
+      );
   }
 
   getCategories(): Observable<IMovieCategories[]> {

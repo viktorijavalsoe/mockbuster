@@ -68,12 +68,11 @@
             <option *ngFor="let paymentMethod of paymentMethods">
               {{ paymentMethod }}
             </option>
-        </select>
-
+          </select>
         </div>
       </div>
       
-    <button [disabled]="!registerForm.valid" type="submit" class="btn btn-success mb-2">Place order</button>
+    <button routerLink="/order-success" type="submit" class="btn btn-success mb-2">Place order</button>
  
 </form>  
 

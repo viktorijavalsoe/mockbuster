@@ -1,0 +1,16 @@
+@import "~src/reset.scss";
+@import "~src/variables";
+@import "~src/mixins";
+
+.container{ 
+  background-color: white;
+  padding: 2rem;
+
+  button{
+    margin: 2rem;
+  }
+
+  @include for-desktop-up{
+    margin-top: 300px;
+  }
+}
