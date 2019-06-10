@@ -41,8 +41,13 @@ export class ShoppingCardService {
 
   removeFromCard(movie: IProduct){ 
     for( let i = 0; i < this.cart.length; i++){
-      if(this.cart[i].product.id === movie.id) {
-        this.cart[i].amount--;
+      if(this.cart[i].product.id === movie.id){
+        if(this.cart[i].amount === 0){
+          this.cart.splice(i, 1);
+
+        }else{
+          this.cart[i].amount--;
+        }
       }
     }
   this.shoppingCartSource.next(this.cart);  

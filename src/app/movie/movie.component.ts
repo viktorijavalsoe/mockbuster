@@ -11,7 +11,6 @@ import { ShoppingCardService } from '../service/shopping-card.service';
 })
 export class MovieComponent implements OnInit {
   @Input() movie: IProduct; 
-  // @Output() movieInfo= new EventEmitter<IProduct>();
   
   productQuantity = 0;
   total = 0;
