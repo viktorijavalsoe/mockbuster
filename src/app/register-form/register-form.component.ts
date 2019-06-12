@@ -56,6 +56,7 @@ export class RegisterFormComponent implements OnInit {
 
   submitOrder(){
     this.detailsForm.emit(this.registerForm.value);
+  
   }
   
 }
