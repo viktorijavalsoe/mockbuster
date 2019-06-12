@@ -7,6 +7,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { IMovieCategories } from '../interfaces/imovie-categories';
 import { ICartItem } from '../interfaces/icart-item';
+import { IOrder } from '../interfaces/iorder';
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +86,42 @@ export class MockdataService implements IDataService {
       name: "Sci-fi"
     }
   ];
+
+  orders: IOrder[] = [
+    { 
+      id: 234234,
+      companyId:28,
+      created:"2019-06-10T12:29:59",
+      createdBy:"viktorija@gmail.com",
+      payment:"visa",
+      totalPrice: 535,
+      status:0,
+      orderRows:[
+        { productId:96,
+          product:null,
+          amount:2,
+        
+        }
+      ]
+    },
+    { 
+      id: 123,
+      companyId:28,
+      created:"2019-06-10T12:29:59",
+      createdBy:"viktorija@gmail.com",
+      payment:"visa",
+      totalPrice: 600,
+      status:0,
+      orderRows:[
+        { productId:78,
+          product:null,
+          amount:2,
+          
+        }
+      ]
+    },
+
+  ];
   
   $searchResult = of(this.products);
 
@@ -148,5 +185,28 @@ export class MockdataService implements IDataService {
        }
        return of(results);
     }
+  }
+
+  getmyOrder(): Observable<IOrder[]> {
+    return of(this.orders)
+      .pipe(
+        // Retry a failed request up to 3 times.
+        retry(3),
+        // Then handle error
+        catchError(this.handleError)
+    );    
+  }
+
+  deleteOrder(id: number): Observable<IOrder[]> {
+    for(let i = 0; i < this.orders.length; i ++ ) {
+      if(id = this.orders[i].id) {
+        this.orders.splice(i, 1);
+      }
+    }
+    return of(this.orders)
+      .pipe(
+        retry(3),
+          catchError(this.handleError)
+      );
   }
 }

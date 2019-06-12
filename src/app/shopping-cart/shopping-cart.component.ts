@@ -5,6 +5,7 @@ import { ICartItem } from '../interfaces/icart-item';
 import { IOrderRows } from '../iorder-rows';
 import * as moment from "moment";
 import { DataService } from '../service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,7 +19,8 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor (
     private shoppingService: ShoppingCardService, 
-    private dataService: DataService ) { }
+    private dataService: DataService,
+    private router: Router) { }
 
   shoppingCart: ICartItem[] = [];
   totalPrice: number;
@@ -36,6 +38,10 @@ export class ShoppingCartComponent implements OnInit {
     getFormDetails(formValues: any){  
       const order = this.createOrder(formValues);
       this.dataService.sendOrder(order).subscribe();
+      setTimeout(() => {
+        this.router.navigate(["order-success"]);
+      }, 1500
+      );
     } 
 
     createOrder(formValues): IOrder {
@@ -45,6 +51,7 @@ export class ShoppingCartComponent implements OnInit {
       this.customer = formValues.email;
 
       return {
+        id: 0, 
         companyId : 28,
         created : moment()
           .locale("sv")

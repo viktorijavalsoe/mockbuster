@@ -70,7 +70,6 @@ export class DataService implements IDataService {
   }
 
   deleteOrder(id: number): Observable<IOrder[]> {
-    // const orderToDeleteUrl: string = `https://medieinstitutet-wie-products.azurewebsites.net/api/orders/${id}`;
     const orderToDeleteUrl: string = this.orderURL+id;
     return this.http.delete<IOrder[]>(orderToDeleteUrl)
       .pipe(
