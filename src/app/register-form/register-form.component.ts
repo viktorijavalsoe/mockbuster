@@ -15,13 +15,22 @@ export class RegisterFormComponent implements OnInit {
   paymentMethods: string [] = ["Visa", "MasterCard", "Paypal"];
 
   registerForm = this.fb.group({ 
-    firstName: ['Viktorija',Validators.required],
-    lastName :['Vals',Validators.required],
-    email :['viktorija@gmail.com',Validators.required],
-    address :['R;rstrandsgata 40a',Validators.required],
-    postCode :['113 40',Validators.required],
-    city :['Stockholm',Validators.required],
-    payment: ['visa']
+    firstName: ['',[
+      Validators.required,
+      Validators.minLength(3)
+    ]],
+    lastName :['',[
+      Validators.required,
+      Validators.minLength(3)
+    ]],
+    email :['',[
+      Validators.required,
+      Validators.email
+    ]],
+    address :['',Validators.required],
+    postCode :['',Validators.required],
+    city :['',Validators.required],
+    payment: ['', Validators.required]
     });
   
   constructor(private fb : FormBuilder) {  
@@ -50,6 +59,10 @@ export class RegisterFormComponent implements OnInit {
 
   get city(){
     return this.registerForm.get('city');
+  }
+
+  get payment(){
+    return this.registerForm.get('payment');
   }
 
   ngOnInit() {  }

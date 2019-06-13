@@ -7,8 +7,14 @@
           type="text" 
           formControlName="firstName" 
           class="form-control">
-          <div *ngIf="firstName.touched && firstName.invalid " class="alert alert-danger">
-            Name is required</div>       
+          <div *ngIf="firstName.touched && firstName.invalid" class="alert alert-danger">
+            <div *ngIf="firstName.errors.required"> 
+              First name is required 
+            </div> 
+            <div *ngIf="firstName.errors.minlength"> 
+              First name must be at least {{ firstName.errors.minlength.requiredLength}} character! 
+            </div>  
+          </div>       
     </div>
     <div class="col-12 col-md-6">
       <label for="lastName">Last Name</label>
@@ -17,7 +23,13 @@
         formControlName="lastName" 
         class="form-control">
         <div *ngIf="lastName.touched && lastName.invalid" class="alert alert-danger">
-          Last name is required</div>
+          <div *ngIf="lastName.errors.required"> 
+            First name is required 
+          </div> 
+          <div *ngIf="lastName.errors.minlength"> 
+            Last name must be at least {{ firstName.errors.minlength.requiredLength}} character! 
+          </div>
+        </div>
     </div> 
   </div>
 
@@ -35,16 +47,18 @@
     formControlName="address" 
     class="form-control">
     <div *ngIf="address.touched && address.invalid " class="alert alert-danger">
-        Address is required</div>
-
+      Address is required
+    </div>
     <div class="row">
         <div class="col-12 col-md-6">
           <label for="postCode">Postal Code</label>
           <input 
-              type="text" 
-              formControlName="postCode" 
-              class="form-control">
-
+            type="text" 
+            formControlName="postCode" 
+            class="form-control">
+            <div *ngIf="postCode.touched && postCode.invalid " class="alert alert-danger">
+              Post code is required!
+            </div>
         </div>
         <div class="col-12 col-md-6">
             <label for="city">City</label>
@@ -68,12 +82,14 @@
             <option *ngFor="let paymentMethod of paymentMethods">
               {{ paymentMethod }}
             </option>
+            <div *ngIf="payment.touched && payment.invalid " class="alert alert-danger">
+              Payment method is required!
+            </div>
           </select>
         </div>
       </div>
       
-    <button type="submit" class="btn btn-success mb-2">Place order</button>
- 
+    <button type="submit" class="btn btn-success mb-2" [disabled]="!registerForm.valid">Place order</button>
 </form>  
 
 

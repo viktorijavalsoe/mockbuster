@@ -13,6 +13,9 @@
           <div class="header">Shopping Cart</div>
         </div>
         <hr>
+        <div class="row justify-content-center header-highlighted">
+          <div>Total amount to pay {{ totalPrice }} sek</div>
+        </div>
         <div 
           class="row shopping-cart"
           *ngFor="let item of shoppingCart">
@@ -44,9 +47,6 @@
               Total {{ item.amount * item.product.price}} sek
               <hr>
             </div>
-          </div>
-          <div class="row justify-content-center header-highlighted">
-            <div>Total amount to pay {{ totalPrice }} sek</div>
           </div>
         </div>  <!-- Wrapper ends--> 
       </div> <!-- checkoutVisibility ends-->
